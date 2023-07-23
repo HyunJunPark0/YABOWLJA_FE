@@ -18,16 +18,23 @@ export default function Header() {
 						<Link href="/list">
 							<button className="h-[40px] text-gray-500 justify-center text-[20px] items-center">볼링공</button>
 						</Link>
-						<Link href="contents">
+						<Link href="/contents">
 							<button className="h-[40px] text-gray-500 justify-center text-[20px] items-center ml-[24px]">
 								Contents
 							</button>
 						</Link>
 					</div>
 					<div>
-						<button className="h-[40px] w-[90px] bg-black text-white rounded-[8px] text-[20px] ml-8 items-center justify-center mr-[24px]">
-							Sign up
-						</button>
+						<Link href="/login">
+							<button className="h-[40px] w-[90px] border-solid border-blue-500 text-black rounded-[8px] text-[20px] ml-8 items-center justify-center mr-[8px]">
+								Login
+							</button>
+						</Link>
+						<Link href="/signup">
+							<button className="h-[40px] w-[90px] hover:bg-[#392f31] bg-black text-white rounded-[8px] text-[20px]  items-center justify-center mr-[24px]">
+								Sign up
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>
