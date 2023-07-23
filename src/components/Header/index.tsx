@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Logo from "../../../public/야볼자 Logo (400 × 150px).png";
 import Link from "next/link";
+
+import Logo from "../../../public/야볼자 Logo (400 × 150px).png";
 
 export default function Header() {
 	return (

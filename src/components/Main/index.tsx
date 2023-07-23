@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import Modal from "../Modal/HomeModal";
+
 import Link from "next/link";
+
+import Modal from "@/components/Modal/HomeModal";
 
 export default function Main() {
 	const [openModal, setOpenModal] = useState(false);
 	const onClickModal = () => {
 		setOpenModal(!openModal);
 	};
+
 	return (
 		<div>
 			<div className="flex-column">
