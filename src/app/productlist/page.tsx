@@ -1,7 +1,9 @@
+import Chart from "@/components/Chart";
+
 export default function ProductList() {
-  return (
-    <div>
-      <h4 className="title">상품비교</h4>
-    </div>
-  );
+	return (
+		<div>
+			<Chart />
+		</div>
+	);
 }
