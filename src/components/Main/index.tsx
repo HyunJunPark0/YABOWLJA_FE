@@ -31,7 +31,7 @@ export default function Main() {
 							볼링공 찾기가 어려우신가요? 걱정마세요! 야볼자에서 알려드립니다
 							<button
 								onClick={onClickModal}
-								className="h-[50px] w-[170px] flex hover:bg-[#4452cc] bg-[#0219Eb] text-white rounded-[14px] text-[20px] ml-8 items-center justify-center "
+								className="h-[50px] w-[170px] flex hover:bg-blue-500 bg-[#2E68C1] text-white rounded-[14px] text-[20px] ml-8 items-center justify-center "
 							>
 								사용법 알아보기
 							</button>
@@ -40,8 +40,8 @@ export default function Main() {
 					</div>
 					<div className="pt-[50px] flex h-[300px] font-bold text-[50px]  items-center justify-center">
 						나에게 맞는 볼링공을 찾아보세요!
-						<Link href="/list">
-							<button className="h-[50px] w-[150px] flex hover:bg-[#4452cc] bg-[#0219Eb] text-white rounded-[14px] text-[20px] ml-8 items-center justify-center">
+						<Link href="/productlist">
+							<button className="h-[50px] w-[150px] flex hover:bg-blue-500 bg-[#2E68C1] text-white rounded-[14px] text-[20px] ml-8 items-center justify-center">
 								찾아보러가기
 							</button>
 						</Link>
