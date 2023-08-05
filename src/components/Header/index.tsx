@@ -24,6 +24,11 @@ export default function Header() {
 								Contents
 							</button>
 						</Link>
+						<Link href="/compare">
+							<button className="h-[40px] text-gray-500 justify-center text-[20px] items-center ml-[24px]">
+								볼링공 비교
+							</button>
+						</Link>
 					</div>
 					<div>
 						<Link href="/login">
