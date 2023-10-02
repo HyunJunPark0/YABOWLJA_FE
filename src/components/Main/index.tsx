@@ -1,9 +1,19 @@
 "use client";
+
+
 import { useState } from "react";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import Modal from "@/components/Modal/HomeModal";
+
+import Banner from "../../../public/banner.svg"
+import CompareIcon from "../../../public/compareIcon.svg"
+import SearchIcon from "../../../public/searchIcon.svg"
+import ProductCard from "../Card/ProductCard";
+
+
 
 export default function Main() {
 	const [openModal, setOpenModal] = useState(false);
@@ -13,7 +23,46 @@ export default function Main() {
 
 	return (
 		<div>
-			<div className="flex-column">
+			<div className="flex mt-[40px] justify-center items-center">
+				<Image src={Banner} alt="Banner" />
+				<div className="absolute text-[36px] text-white justify-center items-center text-center">검색도 비교도<br/> 야볼자로 시작하세요!</div>
+			</div>
+			<div className="flex justify-center items-center gap-[32px] mt-[40px]">
+				<Link href="/productlist">
+				<button className="flex border h-[124px] w-[624px] rounded-[10px]">
+					<Image className="my-[16px] ml-[36px]" src={SearchIcon} alt="SearchIcon" />
+					<div className="flex-coulmn ml-[36px]">
+						<div className="text-[24px] mt-[33px]">
+							내 입맛대로 검색하기
+						</div>
+						<div className="text-[16px]">
+						다양한 조건을 기반으로 공을 검색해 줍니다.
+						</div>
+					</div>
+				</button>
+				</Link>
+				<Link href="/compare">
+				<button className="flex border h-[124px] w-[624px] rounded-[10px]">
+					<Image className="my-[16px] ml-[36px]" src={CompareIcon} alt="CompareIcon" />
+					<div className="flex-coulmn ml-[36px]">
+						<div className="text-[24px] mt-[33px]">
+							비교가 쉬워요
+						</div>
+						<div className="text-[16px]">
+						볼링공들끼리 비교도 쉽게 가능합니다.
+						</div>
+					</div>
+				</button>
+				
+				</Link>
+			</div>
+			<div className="text-[36px] mt-[80px]">New Product
+				<ProductCard/>
+			</div>
+			<div>야볼자란?</div>
+			<div>제조사 배너</div>
+			<div>QnA</div>
+			{/* <div className="flex-column">
 				<div className="flex-column justify-center px-[230px]">
 					<div>
 						<div className="flex h-[200px] font-bold text-[50px] items-center justify-center">야볼자란?</div>
@@ -49,7 +98,7 @@ export default function Main() {
 						<div className="flex font-bold text-[50px]  items-center justify-center"></div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }

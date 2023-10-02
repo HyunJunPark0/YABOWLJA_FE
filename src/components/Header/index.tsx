@@ -8,7 +8,7 @@ import Logo from "../../../public/Logo.svg"
 export default function Header() {
 	return (
 		<div>
-			<div className="h-[64px] flex border border-b-2 items-center justify-center">
+			<div className="h-[64px] flex border border-b-2 items-center justify-center px-[11.2%]">
 				<Link href="/">
 					<button>
 						<Image className="ml-[20px] my-[18px] h-[28px] w-[160px]" src={Logo} alt="Logo" />
@@ -32,7 +32,7 @@ export default function Header() {
 					</div>
 					<div className="flex">
 						<div>
-							<input className="absolute border w-[240px] h-[36px] rounded-[4px]" type="text" placeholder="볼링공 이름을 입력하세요"></input>
+							<input className="absolute border w-[240px] h-[36px] rounded-[4px]" type="text" placeholder={`  볼링공 이름을 입력하세요`}></input>
 							<button className="relative pl-[215px] justify-center items-center text-[18px] pt-[10px]">
 								<BiSearch/>	
 							</button>							
