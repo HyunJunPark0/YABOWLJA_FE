@@ -25,7 +25,7 @@ export const BallList: BowlingBall[] = [
     },
     image: {
       image: ["aws", "s2"],
-      thumbnail_image: "https://",
+      thumbnail_image: "https://bowlingmall.co.kr/web/product/medium/202203/9427e5886028eb5bda462161ac161da7.jpg",
       video_url: "youtube",
     },
     register_date: "2023-07-24",

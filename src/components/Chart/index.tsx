@@ -9,21 +9,21 @@ export default function Chart() {
 		SetClickButton(!clickButton)
 	
 	}
-	const buttonClassName = clickButton ? 'bg-white text-black' : 'bg-gray-400 text-black'
+	const buttonClassName = clickButton ? 'bg-white text-black' : 'bg-gray-400 text-white'
 
 	return (
 		<div>
 			<div className="rounded-[4px] mt-5 mx-[100px] justify-center items-center flex-column border-x-[2px] border-t-[2px] border-solid border-[#2E68C1]">
 				<div className="flex h-[40px] border-b-[2px] border-solid border-[#2E68C1]">
 					<div className="pl-2 text-[20px] w-[140px] bg-[#2E68C1] text-white justify-center items-center">Company</div>
-					<div className="flex gap-6  pl-2">
-						<button className={`justify-center rounded-[5px] ${buttonClassName}`} onClick={handleColorChange}>Storm</button>
+					<div className="flex gap-6  pl-2 justify-center items-center">
+						<button className={`justify-center rounded-[5px] ${buttonClassName} `} onClick={handleColorChange}>Storm</button>
 						<button>900Global</button>
 						<button>Ebonite</button>
 						<button>Rotogrip</button>
 						<button>Brunswick</button>
 						<button>Hammer</button>
-						<button>DV8</button>
+						<button>DV8</button>gj
 					</div>
 				</div>
 				<div className="flex h-[40px] border-b-[2px] border-solid border-[#2E68C1]">
