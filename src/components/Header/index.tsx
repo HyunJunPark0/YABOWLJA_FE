@@ -33,7 +33,7 @@ export default function Header() {
 					<div className="flex">
 						<div>
 							<input className="absolute border w-[240px] h-[36px] rounded-[4px]" type="text" placeholder={`  볼링공 이름을 입력하세요`}></input>
-							<button className="relative pl-[215px] justify-center items-center text-[18px] pt-[10px]">
+							<button className="h-[16px] w-[16px] relative pl-[215px] justify-center items-center text-[18px] pt-[10px]">
 								<BiSearch/>	
 							</button>							
 						</div>
@@ -43,7 +43,7 @@ export default function Header() {
 							</button>
 						</Link>
 						<Link href="/signup">
-							<button className="h-[36px] w-[79px] hover:bg-[#392f31] bg-[#FF6B00] text-white rounded-[4px] text-[14px]  items-center justify-center mr-[24px]">
+							<button className="h-[36px] w-[79px] hover:bg-[#FF8200] bg-[#FF6B00] text-white rounded-[4px] text-[14px]  items-center justify-center mr-[24px]">
 								Sign up
 							</button>
 						</Link>
