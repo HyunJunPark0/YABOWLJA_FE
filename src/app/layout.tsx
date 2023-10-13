@@ -21,7 +21,10 @@ export default function RootLayout({
     <html lang="ko">
       <body className={inter.className}>
         <Header />
+        <div className="max-w-[1280px] mx-auto">
+
         {children}
+        </div>
       </body>
     </html>
   );
