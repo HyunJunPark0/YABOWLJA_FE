@@ -17,8 +17,8 @@ function ProductCard() {
   const Thumbnail = FirstBall.image.thumbnail_image
 
   return (
-    <div className='flex'>
-      <div className='border h-[376px] w-[305px] rounded-[10px] ml-[11.2%]'>
+    <div className='flex items-center justify-center'>
+      <div className='border h-[376px] w-[305px] rounded-[10px]'>
         <div className='flex w-[305px] h-[220px] border-b justify-center items-center'>
           <Image src={Thumbnail} alt='Thumbnail' width={200} height={200}>
           </Image>
@@ -30,7 +30,7 @@ function ProductCard() {
           데모별점
         </div>        
       </div>
-      <div className='border h-[376px] w-[305px] rounded-[10px] mx-[20px]'>
+      <div className='border h-[376px] w-[305px] rounded-[10px] ml-[20px]'>
         <div className='flex w-[305px] h-[220px] border-b justify-center items-center'>
           <Image src={Thumbnail} alt='Thumbnail' width={200} height={200}>
           </Image>
@@ -42,7 +42,7 @@ function ProductCard() {
           데모별점
         </div>        
       </div>
-      <div className='border h-[376px] w-[305px] rounded-[10px] mx-[20px]'>
+      <div className='border h-[376px] w-[305px] rounded-[10px] ml-[20px]'>
         <div className='flex w-[305px] h-[220px] border-b justify-center items-center'>
           <Image src={Thumbnail} alt='Thumbnail' width={200} height={200}>
           </Image>
@@ -54,7 +54,7 @@ function ProductCard() {
           데모별점
         </div>        
       </div>
-      <div className='border h-[376px] w-[305px] rounded-[10px] mx-[20px]'>
+      <div className='border h-[376px] w-[305px] rounded-[10px] ml-[20px]'>
         <div className='flex w-[305px] h-[220px] border-b justify-center items-center'>
           <Image src={Thumbnail} alt='Thumbnail' width={200} height={200}>
           </Image>
