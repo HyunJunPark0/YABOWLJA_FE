@@ -7,11 +7,11 @@ import Logo from "../../../public/Logo.svg"
 
 export default function Header() {
 	return (
-		<div>
-			<div className="h-[64px] flex border border-b-2 items-center justify-center px-[11.2%]">
+		<div className="mx-auto border-b-2">
+			<div className="h-[64px] w-[1280px] mx-auto flex items-center justify-center">
 				<Link href="/">
 					<button>
-						<Image className="ml-[20px] my-[18px] h-[28px] w-[160px]" src={Logo} alt="Logo" />
+						<Image className="h-[28px] w-[160px]" src={Logo} alt="Logo" />
 					</button>
 				</Link>
 				<div className="flex flex-grow justify-between">
@@ -30,20 +30,21 @@ export default function Header() {
 							</button>
 						</Link>
 					</div>
-					<div className="flex">
-						<div>
-							<input className="absolute border w-[240px] h-[36px] rounded-[4px]" type="text" placeholder={`  볼링공 이름을 입력하세요`}></input>
-							<button className="h-[16px] w-[16px] relative pl-[215px] justify-center items-center text-[18px] pt-[10px]">
+					<div className="flex justify-center items-center">
+						<label className="relative">
+							<input className="border w-[240px] h-[36px] rounded-[4px]" type="text" placeholder={`  볼링공 이름을 입력하세요`}>
+							</input>
+							<button className="absolute h-[16px] w-[16px] right-2 my-2.5">
 								<BiSearch/>	
 							</button>							
-						</div>
-						<Link href="/login">
-							<button className="h-[40px] w-[90px] border-solid text-black rounded-[8px] text-[14px] ml-8 items-center justify-center mr-[8px]">
+						</label>
+						<Link href="/login" className="h-[36px] w-[79px] ml-2">
+							<button className="h-[36px] w-[79px] border-solid text-black rounded-[8px] text-[14px] items-center justify-center pr-[8px]">
 								Login
 							</button>
 						</Link>
-						<Link href="/signup">
-							<button className="h-[36px] w-[79px] hover:bg-[#FF8200] bg-[#FF6B00] text-white rounded-[4px] text-[14px]  items-center justify-center mr-[24px]">
+						<Link href="/signup" className="h-[36px] w-[79px]">
+							<button className="h-[36px] w-[79px] hover:bg-[#FF8200] bg-[#FF6B00] text-white rounded-[4px] text-[14px]  items-center justify-center">
 								Sign up
 							</button>
 						</Link>
