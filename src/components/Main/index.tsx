@@ -11,6 +11,8 @@ import Modal from "@/components/Modal/HomeModal";
 import Banner from "../../../public/banner.svg"
 import CompareIcon from "../../../public/compareIcon.svg"
 import SearchIcon from "../../../public/searchIcon.svg"
+import YabowljaBG from "../../../public/YabowljaBG.svg"
+import YabowljaStrikeImg from "../../../public/YabowljaStrikeImg.svg"
 import ProductCard from "../Card/ProductCard";
 
 
@@ -56,10 +58,23 @@ export default function Main() {
 				
 				</Link>
 			</div>
-			<div className="text-[36px] mt-[80px]">New Product
+			<div className="justify-center items-center w-[1280px] mx-auto">
+				<p className="flex items-center text-[30px] font-semibold mt-[80px] mb-[16px]">New Product</p>
 				<ProductCard/>
 			</div>
-			<div>야볼자란?</div>
+			<div className="pt-[60px] relative w-full">
+				
+					<Image src={YabowljaBG} alt="YabowljaBG" className="absolute z-0 w-[1920px] h-[316px]" />
+					<div className="flex w-[1280px] mx-auto justify-between">
+						<div className="z-10 mt-[100px]">
+							<span className="text-[#FF6B00] text-[30px] font-semibold">야볼자란?</span>
+							<br/>
+							<span className="text-[white] text-[16px]">야! 볼링치자! 의 준말입니다.<br/>볼링을 좋아하는 개발자들이 모여 "왜 볼링공은 검색이 어려울까?"라는 생각으로<br/>볼링공 정보에 대한 접근성을 높이기 위해 시작된 프로젝트 입니다.<br/>볼링공을 제조사, 커버스톡 등 다양한 조건에 맞춰 검색할 수 있습니다.</span>
+						</div>
+						<Image src={YabowljaStrikeImg} alt="YabowljaStrikeImg" className="z-10"/>
+					</div>
+				
+			</div>
 			<div>제조사 배너</div>
 			<div>QnA</div>
 			{/* <div className="flex-column">

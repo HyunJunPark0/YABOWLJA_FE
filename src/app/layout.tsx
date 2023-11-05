@@ -21,7 +21,9 @@ export default function RootLayout({
     <html lang="ko">
       <body className={inter.className}>
         <Header />
-        {children}
+        <div className="min-w-[1280px] mx-auto">
+          {children}
+        </div>
       </body>
     </html>
   );
