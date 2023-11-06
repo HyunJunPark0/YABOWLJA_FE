@@ -4,12 +4,10 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { BallList } from "@/mocks/BallList";
 import { BowlingBall } from "@/types/ball";
 
-async function getMockProductDetail() {
-  return BallList[0];
-}
+import { getMockProductDetail } from "./api";
+import { PRODUCT_PAGE_WIDTH } from "./constant";
 
 export default function ProductDetail() {
   const [ball, setBall] = useState<BowlingBall | null>(null);
@@ -27,7 +25,7 @@ export default function ProductDetail() {
   }
 
   return (
-    <div className="flex flex-row mt-4" style={{ width: "calc(60em * 1)" }}>
+    <div className="flex flex-row mt-4" style={{ width: PRODUCT_PAGE_WIDTH }}>
       <div className="w-1/2 flex justify-center">
         <img src={ball.image.thumbnail_image} alt={ball.name} />
       </div>

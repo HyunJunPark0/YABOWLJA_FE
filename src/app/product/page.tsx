@@ -1,4 +1,4 @@
-import Comment from "./Comment";
+import CommentList from "./CommentList";
 import ProductDetail from "./ProductDetail";
 import ProductDetailImage from "./ProductDetailImage";
 
@@ -7,7 +7,7 @@ export default function Product() {
     <div className="flex flex-col items-center">
       <ProductDetail />
       <ProductDetailImage />
-      <Comment />
+      <CommentList />
     </div>
   );
 }
