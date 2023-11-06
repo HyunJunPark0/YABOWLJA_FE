@@ -27,7 +27,9 @@ export const BallList: BowlingBall[] = [
       performance: "High",
     },
     image: {
-      image: ["aws", "s2"],
+      image: [
+        "https://bowlingmall.openhost.cafe24.com/webftp/ebo_rylangularone_dt.jpg",
+      ],
       thumbnail_image:
         "https://bowlingmall.co.kr/web/product/medium/202203/9427e5886028eb5bda462161ac161da7.jpg",
       video_url: "youtube",
