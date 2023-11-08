@@ -1,9 +1,9 @@
-import Chart from "@/components/Chart";
+import Search from '@/components/Search';
 
 export default function ProductList() {
-	return (
-		<div>
-			<Chart />
-		</div>
-	);
+  return (
+    <div>
+      <Search />
+    </div>
+  );
 }
