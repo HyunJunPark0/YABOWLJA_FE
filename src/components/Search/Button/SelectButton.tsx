@@ -4,12 +4,14 @@ type SelectButtonProps = {
   items: string[];
   selectedItems: string[];
   onItemSelect: (selectedItems: string[]) => void;
+  color?: boolean;
 };
 
 export default function SelectButton({
   items,
   onItemSelect,
   selectedItems,
+  color = false,
 }: SelectButtonProps) {
   const toggleItem = (item: string) => {
     if (selectedItems.includes(item)) {
@@ -20,11 +22,21 @@ export default function SelectButton({
   };
 
   return (
-    <div>
+    <div className='flex flex-wrap'>
       {items.map((item) => (
         <button
           key={item}
-          className={`m-2 ${selectedItems.includes(item) ? 'bg-gray94 rounded-xl text-white' : ''}`}
+          className={` mx-3 ${
+            selectedItems.includes(item)
+              ? color
+                ? `bg-${item} rounded-full w-6 h-6 text-transparent border border-#DFDFDF
+`
+                : 'px-2.5 py-1 bg-gray94 rounded-3xl text-white '
+              : color
+              ? `bg-${item} rounded-full w-6 h-6 text-transparent border border-#DFDFDF
+              `
+              : ''
+          }`}
           onClick={() => toggleItem(item)}
         >
           {item}

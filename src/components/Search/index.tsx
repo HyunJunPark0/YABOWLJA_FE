@@ -37,15 +37,15 @@ const Companies = [
 const CoverStock = ['우레탄', '솔리드', '하이브리드', '폴리시드'];
 const FactoryFinish = ['500', '1000', '1500', '2400', '4000'];
 const Color = [
-  'red',
-  'orange',
-  'yellow',
-  'green',
-  'skyblue',
-  'blue',
-  'purple',
-  'black',
-  'white',
+  'Red',
+  'Orange',
+  'Yellow',
+  'Green',
+  'SkyBlue',
+  'Blue',
+  'Purple',
+  'Black',
+  'White',
 ];
 const Pound = ['12', '13', '14', '15', '16'];
 const Symmetry = ['대칭', '비대칭'];
@@ -61,37 +61,30 @@ export default function Search() {
     setselect(selectedItems);
   };
 
-
   return (
     <div className='max-w-[80rem] m-auto border border-gray94'>
-      <div className='flex border-b border-gray94'>
-        <div className='bg-gray-200 w-[10rem] h-[4.5rem] flex items-center pl-[1rem]'>
-          제조회사
-        </div>
+      <div className=' h-[4.5rem] flex border-b border-gray94'>
+        <div className='bg-gray-200 w-40  flex items-center pl-4'>제조회사</div>
         <SelectButton
           items={Companies}
           selectedItems={select}
           onItemSelect={handleItemSelect}
         />
       </div>
-      <div className='flex border-b border-gray94'>
-        <div className='bg-gray-200 w-[10rem] h-[3.5rem] flex items-center pl-[1rem]'>
-          가격
-        </div>
+      <div className='h-14 flex border-b border-gray94'>
+        <div className='bg-gray-200 w-40  flex items-center pl-4'>가격</div>
         <div></div>
       </div>
-      <div className='flex border-b border-gray94'>
-        <div className='bg-gray-200 w-[10rem] h-[2.5rem] flex items-center pl-[1rem]'>
-          커버스톡
-        </div>
+      <div className='h-10 flex border-b border-gray94'>
+        <div className='bg-gray-200 w-40  flex items-center pl-4'>커버스톡</div>
         <SelectButton
           items={CoverStock}
           selectedItems={select}
           onItemSelect={handleItemSelect}
         />
       </div>
-      <div className='flex border-b border-gray94'>
-        <div className='bg-gray-200 w-[10rem] h-[2.5rem] flex items-center pl-[1rem]'>
+      <div className='h-10 flex border-b border-gray94'>
+        <div className='bg-gray-200 w-40 flex items-center pl-4'>
           팩토리 마감
         </div>
         <SelectButton
@@ -100,18 +93,17 @@ export default function Search() {
           onItemSelect={handleItemSelect}
         />
       </div>
-      <div className='flex border-b border-gray94'>
-        <div className='bg-gray-200 w-[10rem] h-[2.5rem] flex items-center pl-[1rem]'>
-          색상
-        </div>
+      <div className='h-10 flex border-b border-gray94'>
+        <div className='bg-gray-200 w-40  flex items-center pl-4'>색상</div>
         <SelectButton
           items={Color}
           selectedItems={select}
           onItemSelect={handleItemSelect}
+          color
         />
       </div>
-      <div className='flex border-b border-gray94'>
-        <div className='bg-gray-200 w-[10rem] h-[2.5rem] flex items-center pl-[1rem]'>
+      <div className='h-10 flex border-b border-gray94'>
+        <div className='bg-gray-200 w-40 flex items-center pl-4'>
           무게(파운드)
         </div>
         <SelectButton
@@ -120,37 +112,34 @@ export default function Search() {
           onItemSelect={handleItemSelect}
         />
       </div>
-      <div className='flex border-b border-gray94'>
-        <div className='bg-gray-200 w-[10rem] h-[2.5rem] flex items-center pl-[1rem]'>
-          대칭 여부
-        </div>
+      <div className='h-10 flex border-b border-gray94'>
+        <div className='bg-gray-200 w-40 flex items-center pl-4'>대칭 여부</div>
         <SelectButton
           items={Symmetry}
           selectedItems={select}
           onItemSelect={handleItemSelect}
         />
       </div>
-      <div className='flex border-b border-gray94'>
-        <div className='bg-gray-200 w-[10rem] h-[2.5rem] flex items-center pl-[1rem]'>
-          퍼포먼스
-        </div>
+      <div className='h-10 flex border-b border-gray94'>
+        <div className='bg-gray-200 w-40 flex items-center pl-4'>퍼포먼스</div>
         <SelectButton
           items={Performance}
           selectedItems={select}
           onItemSelect={handleItemSelect}
         />
       </div>
-      <div className='flex border-b border-gray94'>
-        <div className='bg-gray-200 w-[10rem] h-[3.5rem] flex items-center pl-[1rem]'>
+      <div className='h-14 flex border-b border-gray94'>
+        <div className='bg-gray-200 w-40  flex items-center pl-4'>
           RG Differntial
         </div>
         <div></div>
       </div>
-      <div className='h-[3.25rem] flex items-center'>
+      <div className='h-13 flex items-center'>
         {select.map((item) => (
           <span
             key={item}
-            className='selected ml-[1rem] flex items-center'
+            className='selected ml-[1rem] flex items-center text-Orange
+            '
             onClick={() => {
               handleItemSelect(select.filter((selected) => selected !== item));
             }}
@@ -160,11 +149,11 @@ export default function Search() {
           </span>
         ))}
         <div className=' grow'></div>
-        <button className='flex items-center m-[1.25rem] gap-[0.25rem]' >
+        <button className='flex items-center m-[1.25rem] gap-[0.25rem]'>
           <img src='ArrowClockwise.png' alt='reset' />
           <span>초기화</span>
         </button>
-        <button className='bg-orangebutton text-white w-[5rem] h-[2.25rem] rounded-l rounded-r mr-[1rem]'>
+        <button className='bg-Orange text-white w-[5rem] h-[2.25rem] rounded-l rounded-r mr-[1rem]'>
           검색
         </button>
       </div>
