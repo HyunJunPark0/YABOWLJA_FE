@@ -7,13 +7,16 @@ export const BallList: BowlingBall[] = [
     name: "AURA",
     price: 155000,
     spec: {
-      coverstock: "HYBRID",
-      weight_block: "", // nullable
+      cover_stock: "HYBRID",
+      weight_block: "Atomic Core", // nullable
       factory_finish: "2000GRIT",
       color: ["blue", "black"],
-      flare_portential: "DESERT",
+      flare_potential: "DESERT",
       fragrance: "blueberry", // nullable
       weights: "15",
+      hook: 300,
+      length: 140,
+      lane_condition: "Medium",
       symmetry: true, // 대칭, 비대칭
       cores: {
         weight: "15",
@@ -24,8 +27,11 @@ export const BallList: BowlingBall[] = [
       performance: "High",
     },
     image: {
-      image: ["aws", "s2"],
-      thumbnail_image: "https://bowlingmall.co.kr/web/product/medium/202203/9427e5886028eb5bda462161ac161da7.jpg",
+      image: [
+        "https://bowlingmall.openhost.cafe24.com/webftp/ebo_rylangularone_dt.jpg",
+      ],
+      thumbnail_image:
+        "https://bowlingmall.co.kr/web/product/medium/202203/9427e5886028eb5bda462161ac161da7.jpg",
       video_url: "youtube",
     },
     register_date: "2023-07-24",
