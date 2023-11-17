@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface RangeSliderProps {
+interface IRangeSlider {
   label: string;
   minValue: number;
   maxValue: number;
@@ -8,7 +8,7 @@ interface RangeSliderProps {
   onMaxChange: (value: number) => void;
 }
 
-export const RangeSlider: React.FC<RangeSliderProps> = ({
+export const RangeSlider: React.FC<IRangeSlider> = ({
   label,
   minValue,
   maxValue,

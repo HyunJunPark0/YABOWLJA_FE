@@ -81,12 +81,10 @@ export default function Search() {
   };
 
   const handleRGMinChange = (value: number) => {
-    // 추가적인 로직이 필요하다면 여기에 구현
     setRGMin(value);
   };
 
   const handleRGMaxChange = (value: number) => {
-    // 추가적인 로직이 필요하다면 여기에 구현
     setRGMax(value);
   };
 

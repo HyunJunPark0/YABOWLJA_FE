@@ -1,6 +1,6 @@
 import React from 'react';
 
-type SelectButtonProps = {
+interface ISelectButton {
   items: string[];
   selectedItems: string[];
   onItemSelect: (selectedItems: string[]) => void;
@@ -12,7 +12,7 @@ export default function SelectButton({
   onItemSelect,
   selectedItems,
   color = false,
-}: SelectButtonProps) {
+}: ISelectButton) {
   const toggleItem = (item: string) => {
     if (selectedItems.includes(item)) {
       onItemSelect(selectedItems.filter((selected) => selected !== item));
