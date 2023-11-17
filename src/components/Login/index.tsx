@@ -55,7 +55,7 @@ export default function LoginForm() {
             id='id'
             type='text'
             name='id'
-            placeholder='아이디를 입력하세요'
+            placeholder='아이디'
             value={loginData.id}
             onChange={handleChange}
           />
@@ -66,7 +66,7 @@ export default function LoginForm() {
             id='password'
             type='password'
             name='password'
-            placeholder='비밀번호를 입력하세요'
+            placeholder='비밀번호'
             value={loginData.password}
             onChange={handleChange}
           />
