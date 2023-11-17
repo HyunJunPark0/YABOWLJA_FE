@@ -2,6 +2,7 @@
 import { useState } from 'react';
 
 import SelectButton from './Button/SelectButton';
+import { RangeSlider } from './Range/RangeSlider';
 
 // interface ISearchData {
 //   compoanies: [];
@@ -36,6 +37,7 @@ const Companies = [
 ];
 const CoverStock = ['우레탄', '솔리드', '하이브리드', '폴리시드'];
 const FactoryFinish = ['500', '1000', '1500', '2400', '4000'];
+
 const Color = [
   'Red',
   'Orange',
@@ -47,6 +49,7 @@ const Color = [
   'Black',
   'White',
 ];
+
 const Pound = ['12', '13', '14', '15', '16'];
 const Symmetry = ['대칭', '비대칭'];
 const Performance = ['엔트리', '로우미들', '미들', '어퍼미들', '하이'];
@@ -55,16 +58,46 @@ export default function Search() {
   // const [searchData, setSearchData] = useState<ISearchData>({
 
   // })
-  const [select, setselect] = useState<string[]>([]);
+  const [select, setSelect] = useState<string[]>([]);
+  const [priceMin, setPriceMin] = useState<number>(0);
+  const [priceMax, setPriceMax] = useState<number>(1000000);
+  const [rgMin, setRGMin] = useState<number>(0);
+  const [rgMax, setRGMax] = useState<number>(1000000);
 
   const handleItemSelect = (selectedItems: string[]) => {
-    setselect(selectedItems);
+    setSelect(selectedItems);
   };
+
+  const handlePriceMinChange = (value: number) => {
+    if (value <= priceMax - 10000) {
+      setPriceMin(value);
+    }
+  };
+
+  const handlePriceMaxChange = (value: number) => {
+    if (value >= priceMin + 10000) {
+      setPriceMax(value);
+    }
+  };
+
+  const handleRGMinChange = (value: number) => {
+    // 추가적인 로직이 필요하다면 여기에 구현
+    setRGMin(value);
+  };
+
+  const handleRGMaxChange = (value: number) => {
+    // 추가적인 로직이 필요하다면 여기에 구현
+    setRGMax(value);
+  };
+
+  const handleReset = () => {
+    setSelect([])
+  }
 
   return (
     <div className='max-w-[80rem] m-auto border border-gray94'>
       <div className=' h-[4.5rem] flex border-b border-gray94'>
-        <div className='bg-gray-200 w-40  flex items-center pl-4'>제조회사</div>
+        <div className='bg-gray-200 w-40 flex items-center pl-4'>제조회사</div>
         <SelectButton
           items={Companies}
           selectedItems={select}
@@ -73,7 +106,15 @@ export default function Search() {
       </div>
       <div className='h-14 flex border-b border-gray94'>
         <div className='bg-gray-200 w-40  flex items-center pl-4'>가격</div>
-        <div></div>
+        <div className=' flex items-center ml-4'>
+          <RangeSlider
+            label='가격'
+            minValue={priceMin}
+            maxValue={priceMax}
+            onMinChange={handlePriceMinChange}
+            onMaxChange={handlePriceMaxChange}
+          />
+        </div>
       </div>
       <div className='h-10 flex border-b border-gray94'>
         <div className='bg-gray-200 w-40  flex items-center pl-4'>커버스톡</div>
@@ -132,7 +173,15 @@ export default function Search() {
         <div className='bg-gray-200 w-40  flex items-center pl-4'>
           RG Differntial
         </div>
-        <div></div>
+        <div className=' flex items-center ml-4'>
+          <RangeSlider
+            label='RG'
+            minValue={rgMin}
+            maxValue={rgMax}
+            onMinChange={handleRGMinChange}
+            onMaxChange={handleRGMaxChange}
+          />
+        </div>{' '}
       </div>
       <div className='h-13 flex items-center'>
         {select.map((item) => (
@@ -149,8 +198,8 @@ export default function Search() {
           </span>
         ))}
         <div className=' grow'></div>
-        <button className='flex items-center m-[1.25rem] gap-[0.25rem]'>
-          <img src='ArrowClockwise.png' alt='reset' />
+        <button className='flex items-center m-[1.25rem] gap-[0.25rem]' onClick={handleReset}>
+          <img src='ArrowClockwise.png' alt='reset'/>
           <span>초기화</span>
         </button>
         <button className='bg-Orange text-white w-[5rem] h-[2.25rem] rounded-l rounded-r mr-[1rem]'>
