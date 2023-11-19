@@ -11,13 +11,16 @@ export interface BowlingBall {
 }
 
 export interface BallSpec {
-  coverstock: string;
+  cover_stock: string;
   weight_block?: string; // nullable
   factory_finish: string;
   color: string[];
-  flare_portential: string;
+  flare_potential: string;
   fragrance?: string; // nullable
   weights: string;
+  hook: number;
+  length: number;
+  lane_condition: string;
   symmetry: boolean; // 대칭, 비대칭
   cores: Core;
   performance: string;
