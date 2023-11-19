@@ -16,6 +16,7 @@
 }
 body {
 	-ms-overflow-style: none;
+	font-size: 14px
 }
 
 ::-webkit-scrollbar {

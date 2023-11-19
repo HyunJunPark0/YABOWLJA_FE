@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import CompareIcon from "../../../public/compareIcon.svg";
-import SearchIcon from "../../../public/searchIcon.svg";
-import YabowljaBG from "../../../public/YabowljaBG.svg";
-import YabowljaStrikeImg from "../../../public/YabowljaStrikeImg.svg";
-import BannerCarousel from "../BannerCarousel";
-import ProductCard from "../Card/ProductCard";
-import ToggleSection from "../ToggleSection";
-import NewProductCarousel from "../NewProductCarousel";
+import CompareIcon from '../../../public/compareIcon.svg';
+import SearchIcon from '../../../public/searchIcon.svg';
+import YabowljaBG from '../../../public/YabowljaBG.svg';
+import YabowljaStrikeImg from '../../../public/YabowljaStrikeImg.svg';
+import BannerCarousel from '../BannerCarousel';
+import ProductCard from '../Card/ProductCard';
+import ToggleSection from '../ToggleSection';
+import NewProductCarousel from '../NewProductCarousel';
 
 export default function Main() {
   const [readMore, setReadMore] = useState(false);
@@ -30,57 +30,57 @@ export default function Main() {
         </div>
       </div> */}
       <BannerCarousel />
-      <div className="flex justify-center items-center gap-[32px] mt-[40px]">
-        <Link href="/productlist">
-          <button className="flex border h-[124px] w-[624px] rounded-[10px]">
+      <div className='flex justify-center items-center gap-[32px] mt-[40px]'>
+        <Link href='/productList'>
+          <button className='flex border h-[124px] w-[624px] rounded-[10px]'>
             <Image
-              className="my-[16px] ml-[36px]"
+              className='my-[16px] ml-[36px]'
               src={SearchIcon}
-              alt="SearchIcon"
+              alt='SearchIcon'
             />
-            <div className="flex-coulmn ml-[36px]">
-              <div className="text-[24px] mt-[33px]">내 입맛대로 검색하기</div>
-              <div className="text-[16px]">
+            <div className='flex-coulmn ml-[36px]'>
+              <div className='text-[24px] mt-[33px]'>내 입맛대로 검색하기</div>
+              <div className='text-[16px]'>
                 다양한 조건을 기반으로 공을 검색해 줍니다.
               </div>
             </div>
           </button>
         </Link>
-        <Link href="/compare">
-          <button className="flex border h-[124px] w-[624px] rounded-[10px]">
+        <Link href='/compare'>
+          <button className='flex border h-[124px] w-[624px] rounded-[10px]'>
             <Image
-              className="my-[16px] ml-[36px]"
+              className='my-[16px] ml-[36px]'
               src={CompareIcon}
-              alt="CompareIcon"
+              alt='CompareIcon'
             />
-            <div className="flex-coulmn ml-[36px]">
-              <div className="text-[24px] mt-[33px]">비교가 쉬워요</div>
-              <div className="text-[16px]">
+            <div className='flex-coulmn ml-[36px]'>
+              <div className='text-[24px] mt-[33px]'>비교가 쉬워요</div>
+              <div className='text-[16px]'>
                 볼링공들끼리 비교도 쉽게 가능합니다.
               </div>
             </div>
           </button>
         </Link>
       </div>
-      <div className="justify-center items-center w-[1280px] mx-auto">
-        <p className="flex items-center text-[30px] font-semibold mt-[80px] mb-[16px]">
+      <div className='justify-center items-center w-[1280px] mx-auto'>
+        <p className='flex items-center text-[30px] font-semibold mt-[80px] mb-[16px]'>
           New Product
         </p>
         <ProductCard />
       </div>
-      <div className="pt-[60px] relative w-full">
+      <div className='pt-[60px] relative w-full'>
         <Image
           src={YabowljaBG}
-          alt="YabowljaBG"
-          className="absolute z-0 w-[1920px] h-[316px]"
+          alt='YabowljaBG'
+          className='absolute z-0 w-[1920px] h-[316px]'
         />
-        <div className="flex w-[1280px] mx-auto justify-between">
-          <div className="z-10 mt-[100px]">
-            <span className="text-[#FF6B00] text-[30px] font-semibold">
+        <div className='flex w-[1280px] mx-auto justify-between'>
+          <div className='z-10 mt-[100px]'>
+            <span className='text-[#FF6B00] text-[30px] font-semibold'>
               야볼자란?
             </span>
             <br />
-            <span className="text-[white] text-[16px]">
+            <span className='text-[white] text-[16px]'>
               야! 볼링치자! 의 준말입니다.
               <br />
               볼링을 좋아하는 개발자들이 모여 "왜 볼링공은 검색이 어려울까?"라는
@@ -94,26 +94,26 @@ export default function Main() {
           </div>
           <Image
             src={YabowljaStrikeImg}
-            alt="YabowljaStrikeImg"
-            className="z-10"
+            alt='YabowljaStrikeImg'
+            className='z-10'
           />
         </div>
       </div>
 
       <div>제조사 배너</div>
-      <div className="justify-center items-center w-[1280px] mx-auto mb-10">
-        <div className="flex items-center text-[30px] font-semibold mt-[80px]">
+      <div className='justify-center items-center w-[1280px] mx-auto mb-10'>
+        <div className='flex items-center text-[30px] font-semibold mt-[80px]'>
           Q&A
         </div>
         <div>
-          <ToggleSection title="aaaa" content="aaa" />
-          <ToggleSection title="bbbb" content="bbbbbb" />
-          {readMore && <ToggleSection title="ccc" content="cc" />}
-          {readMore && <ToggleSection title="ddd" content="ddd" />}
-          {readMore && <ToggleSection title="ee" content="ee" />}
+          <ToggleSection title='aaaa' content='aaa' />
+          <ToggleSection title='bbbb' content='bbbbbb' />
+          {readMore && <ToggleSection title='ccc' content='cc' />}
+          {readMore && <ToggleSection title='ddd' content='ddd' />}
+          {readMore && <ToggleSection title='ee' content='ee' />}
           <button
             onClick={onClickReadMore}
-            className="mx-auto flex font-semibold border bg-[#FAFAFA] border-[#E0E0E0] h-[48px] w-[130px] justify-center items-center rounded-[4px]"
+            className='mx-auto flex font-semibold border bg-[#FAFAFA] border-[#E0E0E0] h-[48px] w-[130px] justify-center items-center rounded-[4px]'
           >
             Read More
           </button>
