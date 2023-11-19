@@ -5,13 +5,14 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import Banner from "../../../public/banner.svg";
 import CompareIcon from "../../../public/compareIcon.svg";
 import SearchIcon from "../../../public/searchIcon.svg";
 import YabowljaBG from "../../../public/YabowljaBG.svg";
 import YabowljaStrikeImg from "../../../public/YabowljaStrikeImg.svg";
+import BannerCarousel from "../BannerCarousel";
 import ProductCard from "../Card/ProductCard";
 import ToggleSection from "../ToggleSection";
+import NewProductCarousel from "../NewProductCarousel";
 
 export default function Main() {
   const [readMore, setReadMore] = useState(false);
@@ -21,13 +22,14 @@ export default function Main() {
 
   return (
     <div>
-      <div className="flex mt-[40px] justify-center items-center">
+      {/* <div className="flex mt-[40px] justify-center items-center">
         <Image src={Banner} alt="Banner" />
         <div className="absolute text-[36px] text-white justify-center items-center text-center">
           검색도 비교도
           <br /> 야볼자로 시작하세요!
         </div>
-      </div>
+      </div> */}
+      <BannerCarousel />
       <div className="flex justify-center items-center gap-[32px] mt-[40px]">
         <Link href="/productlist">
           <button className="flex border h-[124px] w-[624px] rounded-[10px]">
@@ -99,8 +101,8 @@ export default function Main() {
       </div>
 
       <div>제조사 배너</div>
-      <div className="justify-center items-center w-[1280px] mx-auto">
-        <div className="flex items-center text-[30px] font-semibold mt-[80px] mb-[16px]">
+      <div className="justify-center items-center w-[1280px] mx-auto mb-10">
+        <div className="flex items-center text-[30px] font-semibold mt-[80px]">
           Q&A
         </div>
         <div>
