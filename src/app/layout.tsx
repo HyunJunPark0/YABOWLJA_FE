@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
 import "./globals.css";
@@ -21,9 +22,10 @@ export default function RootLayout({
     <html lang="ko">
       <body className={inter.className}>
         <Header />
-        <div className="min-w-[1280px] mx-auto">
+        <div className="min-w-[1280px] mx-auto h-full min-h-[100%] pb-[180px]">
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   );
