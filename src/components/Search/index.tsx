@@ -1,8 +1,11 @@
 'use client';
 import { useState } from 'react';
 
+import { Slider } from 'antd';
+
 import SelectButton from './Button/SelectButton';
-import { RangeSlider } from './Range/RangeSlider';
+
+import type { SliderMarks } from 'antd/es/slider';
 
 // interface ISearchData {
 //   compoanies: [];
@@ -50,6 +53,16 @@ const Color = [
   'White',
 ];
 
+const Pricemarks: SliderMarks = {
+  0: '0원',
+  100: '~100만원',
+};
+
+const Diffmarks: SliderMarks = {
+  0.01: '0.01',
+  0.08: '0.08',
+};
+
 const Pound = ['12', '13', '14', '15', '16'];
 const Symmetry = ['대칭', '비대칭'];
 const Performance = ['엔트리', '로우미들', '미들', '어퍼미들', '하이'];
@@ -59,38 +72,24 @@ export default function Search() {
 
   // })
   const [select, setSelect] = useState<string[]>([]);
-  const [priceMin, setPriceMin] = useState<number>(0);
-  const [priceMax, setPriceMax] = useState<number>(1000000);
-  const [rgMin, setRGMin] = useState<number>(0);
-  const [rgMax, setRGMax] = useState<number>(1000000);
 
   const handleItemSelect = (selectedItems: string[]) => {
     setSelect(selectedItems);
   };
 
-  const handlePriceMinChange = (value: number) => {
-    if (value <= priceMax - 10000) {
-      setPriceMin(value);
-    }
-  };
-
-  const handlePriceMaxChange = (value: number) => {
-    if (value >= priceMin + 10000) {
-      setPriceMax(value);
-    }
-  };
-
-  const handleRGMinChange = (value: number) => {
-    setRGMin(value);
-  };
-
-  const handleRGMaxChange = (value: number) => {
-    setRGMax(value);
-  };
-
   const handleReset = () => {
-    setSelect([])
-  }
+    setSelect([]);
+  };
+
+  const tipFormatter = (value: number[]) => {
+    return `${value}만원`;
+  };
+
+  const trackStyle = [{ backgroundColor: 'gray' }, { backgroundColor: 'gray' }];
+  const handleStyle = [
+    { backgroundColor: 'red', borderColor: 'red' },
+    { backgroundColor: 'gray', borderColor: 'gray' },
+  ];
 
   return (
     <div className='max-w-[80rem] m-auto border border-gray94'>
@@ -104,15 +103,19 @@ export default function Search() {
       </div>
       <div className='h-14 flex border-b border-gray94'>
         <div className='bg-gray-200 w-40  flex items-center pl-4'>가격</div>
-        <div className=' flex items-center ml-4'>
-          <RangeSlider
-            label='가격'
-            minValue={priceMin}
-            maxValue={priceMax}
-            onMinChange={handlePriceMinChange}
-            onMaxChange={handlePriceMaxChange}
-          />
-        </div>
+        <Slider
+          range
+          marks={Pricemarks}
+          className='w-[25rem] ml-4 bg-transparent text-gray94'
+          v
+          defaultValue={[0, 100]}
+          tipFormatter={tipFormatter}
+          trackStyle={trackStyle}
+          handleStyle={handleStyle}
+          onChange={(value: number[]) => {
+            setSelect([`${value[0]}만원 ~ ${value[1]}만원`]);
+          }}
+        />
       </div>
       <div className='h-10 flex border-b border-gray94'>
         <div className='bg-gray-200 w-40  flex items-center pl-4'>커버스톡</div>
@@ -171,15 +174,18 @@ export default function Search() {
         <div className='bg-gray-200 w-40  flex items-center pl-4'>
           RG Differntial
         </div>
-        <div className=' flex items-center ml-4'>
-          <RangeSlider
-            label='RG'
-            minValue={rgMin}
-            maxValue={rgMax}
-            onMinChange={handleRGMinChange}
-            onMaxChange={handleRGMaxChange}
-          />
-        </div>{' '}
+        <Slider
+          range
+          min={0.01}
+          max={0.08}
+          step={0.01}
+          marks={Diffmarks}
+          className='w-[25rem] ml-4 bg-transparent text-gray94'
+          defaultValue={[0.01, 0.08]}
+          trackStyle={trackStyle}
+          handleStyle={handleStyle}
+          onChange={(value: number[]) => setSelect([`${value[0]}~${value[1]}`])}
+        />
       </div>
       <div className='h-13 flex items-center'>
         {select.map((item) => (
@@ -196,8 +202,11 @@ export default function Search() {
           </span>
         ))}
         <div className=' grow'></div>
-        <button className='flex items-center m-[1.25rem] gap-[0.25rem]' onClick={handleReset}>
-          <img src='ArrowClockwise.png' alt='reset'/>
+        <button
+          className='flex items-center m-[1.25rem] gap-[0.25rem]'
+          onClick={handleReset}
+        >
+          <img src='ArrowClockwise.png' alt='reset' />
           <span>초기화</span>
         </button>
         <button className='bg-Orange text-white w-[5rem] h-[2.25rem] rounded-l rounded-r mr-[1rem]'>
