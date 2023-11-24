@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { Slider } from 'antd';
 
 import SelectButton from './Button/SelectButton';
+import Card from './Card.tsx/Card';
 
 import type { SliderMarks } from 'antd/es/slider';
-import Card from './Card.tsx/Card';
 
 // interface ISearchData {
 //   compoanies: [];
@@ -93,8 +93,8 @@ export default function Search() {
   ];
 
   return (
-    <div>
-      <div className='max-w-[80rem] m-auto border border-gray94'>
+    <div className='max-w-[80rem] m-auto'>
+      <div className=' border border-gray94'>
         <div className=' h-[4.5rem] flex border-b border-gray94'>
           <div className='bg-gray-200 w-40 flex items-center pl-4'>
             제조회사
@@ -228,11 +228,24 @@ export default function Search() {
           </button>
         </div>
       </div>
-      <div>상품
-        <div></div>
-        <Card/>
+      <div className='w-[80rem] h-[50rem] mt-16'>
+        상품
+        <div className='flex items-center justify-end'>
+          <button>출시일순</button>
+          <span
+            className=' m-1 left-0 top-1 w-0.1 h-2.5 border border-#d9d9d9'
+            content=''
+          ></span>
+          <button>별점순</button>
+          <span
+            className=' m-1 left-0 top-1 w-0.1 h-2.5 border border-#d9d9d9'
+            content=''
+          ></span>
+          <button>RG값순</button>
+        </div>
+        <Card />
       </div>
-      <div>버튼</div>
+      <div className='flex items-center justify-center'>버튼</div>
     </div>
   );
 }
