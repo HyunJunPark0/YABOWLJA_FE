@@ -5,7 +5,8 @@ interface ISelectButton {
   selectedItems: string[];
   onItemSelect: (selectedItems: string[]) => void;
   color?: boolean;
-};
+  
+}
 
 export default function SelectButton({
   items,
@@ -29,12 +30,10 @@ export default function SelectButton({
           className={` ${
             selectedItems.includes(item)
               ? color
-                ? ` mx-2.5 bg-${item} rounded-full w-6 h-6 text-transparent border border-#DFDFDF
-`
+                ? `mx-2.5 bg-${item} rounded-full w-6 h-6 text-transparent border border-#DFDFDF`
                 : 'mx-1.5 px-2.5 py-1  bg-gray94 rounded-3xl text-white '
               : color
-              ? `mx-2.5 bg-${item} rounded-full w-6 h-6 text-transparent border border-#DFDFDF
-              `
+              ? `mx-2.5 bg-${item} rounded-full w-6 h-6 text-transparent border border-#DFDFDF`
               : 'mx-1.5 px-2.5 py-1 '
           }`}
           onClick={() => toggleItem(item)}
