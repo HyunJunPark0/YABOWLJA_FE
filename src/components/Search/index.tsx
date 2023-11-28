@@ -8,17 +8,29 @@ import Card from './Card.tsx/Card';
 
 import type { SliderMarks } from 'antd/es/slider';
 
-// interface ISearchData {
-//   compoanies: [];
-//   price: string;
-//   coverStock: string;
-//   factoryFinish: string;
-//   color: string;
-//   pound: string;
-//   symmetry: string;
-//   performance: string;
-//   diff: string;
-// }
+interface ISelectedItems {
+  companies: string[];
+  price: string[];
+  coverstock: string[];
+  factoryfinish: string[];
+  color: string[];
+  pound: string[];
+  symmetry: string[];
+  performance: string[];
+  diff: string[];
+}
+
+const initialState: ISelectedItems = {
+  companies: [],
+  price: [],
+  coverstock: [],
+  factoryfinish: [],
+  color: [],
+  pound: [],
+  symmetry: [],
+  performance: [],
+  diff: [],
+};
 
 const Companies = [
   '콜롬비아300',
@@ -69,22 +81,34 @@ const Symmetry = ['대칭', '비대칭'];
 const Performance = ['엔트리', '로우미들', '미들', '어퍼미들', '하이'];
 
 export default function Search() {
-  // const [searchData, setSearchData] = useState<ISearchData>({
+  const [select, setSelect] = useState<ISelectedItems>(initialState);
 
-  // })
-  const [select, setSelect] = useState<string[]>([]);
-
-  const handleItemSelect = (selectedItems: string[]) => {
-    setSelect(selectedItems);
+  const handleItemSelect = (category: string, selectedItems: string[]) => {
+    setSelect((prev) => ({
+      ...prev,
+      [category]: selectedItems,
+    }));
+    console.log('Current State:', select);
   };
 
   const handleReset = () => {
-    setSelect([]);
+    setSelect(initialState);
+  };
+
+  const handleSliderChange = (category: string, value: number[]) => {
+    setSelect((prevSelect) => ({
+      ...prevSelect,
+      [category]: value,
+    }));
   };
 
   const tipFormatter = (value: number[]) => {
     return `${value}만원`;
   };
+
+  // const onClickSearchButton = (e: React.FormEvent<HTMLInputElement>) => {
+  //   e.preventDefault();
+  // };
 
   const trackStyle = [{ backgroundColor: 'gray' }, { backgroundColor: 'gray' }];
   const handleStyle = [
@@ -101,8 +125,10 @@ export default function Search() {
           </div>
           <SelectButton
             items={Companies}
-            selectedItems={select}
-            onItemSelect={handleItemSelect}
+            selectedItems={select.companies}
+            onItemSelect={(selectedItems) =>
+              handleItemSelect('companies', selectedItems)
+            }
           />
         </div>
         <div className='h-14 flex border-b border-gray94'>
@@ -117,7 +143,7 @@ export default function Search() {
             trackStyle={trackStyle}
             handleStyle={handleStyle}
             onChange={(value: number[]) => {
-              setSelect([`${value[0]}만원 ~ ${value[1]}만원`]);
+              handleSliderChange('price', value);
             }}
           />
         </div>
@@ -127,8 +153,10 @@ export default function Search() {
           </div>
           <SelectButton
             items={CoverStock}
-            selectedItems={select}
-            onItemSelect={handleItemSelect}
+            selectedItems={select.coverstock}
+            onItemSelect={(selectedItems) =>
+              handleItemSelect('coverstock', selectedItems)
+            }
           />
         </div>
         <div className='h-10 flex border-b border-gray94'>
@@ -137,16 +165,20 @@ export default function Search() {
           </div>
           <SelectButton
             items={FactoryFinish}
-            selectedItems={select}
-            onItemSelect={handleItemSelect}
+            selectedItems={select.factoryfinish}
+            onItemSelect={(selectedItems) =>
+              handleItemSelect('factoryfinish', selectedItems)
+            }
           />
         </div>
         <div className='h-10 flex border-b border-gray94'>
           <div className='bg-gray-200 w-40  flex items-center pl-4'>색상</div>
           <SelectButton
             items={Color}
-            selectedItems={select}
-            onItemSelect={handleItemSelect}
+            selectedItems={select.color}
+            onItemSelect={(selectedItems) =>
+              handleItemSelect('color', selectedItems)
+            }
             color
           />
         </div>
@@ -156,8 +188,10 @@ export default function Search() {
           </div>
           <SelectButton
             items={Pound}
-            selectedItems={select}
-            onItemSelect={handleItemSelect}
+            selectedItems={select.pound}
+            onItemSelect={(selectedItems) =>
+              handleItemSelect('pound', selectedItems)
+            }
           />
         </div>
         <div className='h-10 flex border-b border-gray94'>
@@ -166,8 +200,10 @@ export default function Search() {
           </div>
           <SelectButton
             items={Symmetry}
-            selectedItems={select}
-            onItemSelect={handleItemSelect}
+            selectedItems={select.symmetry}
+            onItemSelect={(selectedItems) =>
+              handleItemSelect('symmetry', selectedItems)
+            }
           />
         </div>
         <div className='h-10 flex border-b border-gray94'>
@@ -176,8 +212,10 @@ export default function Search() {
           </div>
           <SelectButton
             items={Performance}
-            selectedItems={select}
-            onItemSelect={handleItemSelect}
+            selectedItems={select.performance}
+            onItemSelect={(selectedItems) =>
+              handleItemSelect('performance', selectedItems)
+            }
           />
         </div>
         <div className='h-14 flex border-b border-gray94'>
@@ -194,27 +232,30 @@ export default function Search() {
             defaultValue={[0.01, 0.08]}
             trackStyle={trackStyle}
             handleStyle={handleStyle}
-            onChange={(value: number[]) =>
-              setSelect([`${value[0]}~${value[1]}`])
-            }
+            onChange={(value: number[]) => {
+              handleSliderChange('diff', value);
+            }}
           />
         </div>
         <div className='h-13 flex items-center'>
-          {select.map((item) => (
-            <span
-              key={item}
-              className='selected ml-[1rem] flex items-center text-Orange
-            '
-              onClick={() => {
-                handleItemSelect(
-                  select.filter((selected) => selected !== item)
-                );
-              }}
-            >
-              {item}
-              <img src='cancle.png' alt='cancle' />
-            </span>
-          ))}
+          {Object.entries(select).map(
+            ([category, selectedItems]: [string, string[]]) =>
+              selectedItems.map((item) => (
+                <span
+                  key={`${category}-${item}`}
+                  className='selected ml-[1rem] flex items-center text-Orange'
+                  onClick={() => {
+                    handleItemSelect(
+                      category,
+                      selectedItems.filter((selected) => selected !== item)
+                    );
+                  }}
+                >
+                  {item}
+                  <img src='cancle.png' alt='cancel' />
+                </span>
+              ))
+          )}
           <div className=' grow'></div>
           <button
             className='flex items-center m-[1.25rem] gap-[0.25rem]'
@@ -228,6 +269,7 @@ export default function Search() {
           </button>
         </div>
       </div>
+
       <div className='w-[80rem] h-[50rem] mt-16'>
         상품
         <div className='flex items-center justify-end'>
