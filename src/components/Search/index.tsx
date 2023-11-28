@@ -2,11 +2,17 @@
 import { useState } from 'react';
 
 import { Slider } from 'antd';
+import Image from 'next/image';
 
 import SelectButton from './Button/SelectButton';
 import Card from './Card.tsx/Card';
+import Cancle from '../../../public/XCircle.svg';
+import Reset from '../../../public/ArrowClockwise.svg'
 
 import type { SliderMarks } from 'antd/es/slider';
+
+
+
 
 interface ISelectedItems {
   companies: string[];
@@ -82,6 +88,7 @@ const Performance = ['엔트리', '로우미들', '미들', '어퍼미들', '하
 
 export default function Search() {
   const [select, setSelect] = useState<ISelectedItems>(initialState);
+  const [selectSlider, setSelectSlider] = useState<string[]>([]);
 
   const handleItemSelect = (category: string, selectedItems: string[]) => {
     setSelect((prev) => ({
@@ -144,6 +151,7 @@ export default function Search() {
             handleStyle={handleStyle}
             onChange={(value: number[]) => {
               handleSliderChange('price', value);
+              setSelectSlider([`${value[0]}만원~${value[1]}만원`]);
             }}
           />
         </div>
@@ -234,6 +242,7 @@ export default function Search() {
             handleStyle={handleStyle}
             onChange={(value: number[]) => {
               handleSliderChange('diff', value);
+              setSelectSlider([`${value[0]}~${value[1]}`]);
             }}
           />
         </div>
@@ -251,8 +260,12 @@ export default function Search() {
                     );
                   }}
                 >
-                  {item}
-                  <img src='cancle.png' alt='cancel' />
+                  {category !== 'diff' && category !== 'price' && (
+                    <>
+                      {item}
+                      <Image src={Cancle} alt='cancel' />
+                    </>
+                  )}
                 </span>
               ))
           )}
@@ -261,7 +274,7 @@ export default function Search() {
             className='flex items-center m-[1.25rem] gap-[0.25rem]'
             onClick={handleReset}
           >
-            <img src='ArrowClockwise.png' alt='reset' />
+            <Image src={Reset} alt='reset' />
             <span>초기화</span>
           </button>
           <button className='bg-Orange text-white w-[5rem] h-[2.25rem] rounded-l rounded-r mr-[1rem]'>
