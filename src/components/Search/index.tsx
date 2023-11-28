@@ -6,13 +6,10 @@ import Image from 'next/image';
 
 import SelectButton from './Button/SelectButton';
 import Card from './Card.tsx/Card';
+import Reset from '../../../public/ArrowClockwise.svg';
 import Cancle from '../../../public/XCircle.svg';
-import Reset from '../../../public/ArrowClockwise.svg'
 
 import type { SliderMarks } from 'antd/es/slider';
-
-
-
 
 interface ISelectedItems {
   companies: string[];
@@ -88,7 +85,6 @@ const Performance = ['엔트리', '로우미들', '미들', '어퍼미들', '하
 
 export default function Search() {
   const [select, setSelect] = useState<ISelectedItems>(initialState);
-  const [selectSlider, setSelectSlider] = useState<string[]>([]);
 
   const handleItemSelect = (category: string, selectedItems: string[]) => {
     setSelect((prev) => ({
@@ -103,6 +99,7 @@ export default function Search() {
   };
 
   const handleSliderChange = (category: string, value: number[]) => {
+    
     setSelect((prevSelect) => ({
       ...prevSelect,
       [category]: value,
@@ -151,7 +148,6 @@ export default function Search() {
             handleStyle={handleStyle}
             onChange={(value: number[]) => {
               handleSliderChange('price', value);
-              setSelectSlider([`${value[0]}만원~${value[1]}만원`]);
             }}
           />
         </div>
@@ -242,12 +238,68 @@ export default function Search() {
             handleStyle={handleStyle}
             onChange={(value: number[]) => {
               handleSliderChange('diff', value);
-              setSelectSlider([`${value[0]}~${value[1]}`]);
             }}
           />
         </div>
         <div className='h-13 flex items-center'>
           {Object.entries(select).map(
+            ([category, selectedItems]: [string, string[]]) =>
+              selectedItems.map((item, index) => {
+                if (category === 'price') {
+                  const [min, max] = select[category];
+
+                  return (
+                    <span
+                      key={`${category}-${item}`}
+                      className='selected ml-[1rem] flex items-center text-Orange'
+                      onClick={() => {
+                        handleItemSelect(
+                          category,
+                          selectedItems.filter((selected) => selected !== item)
+                        );
+                      }}
+                    >
+                      {min}만원~{max}만원
+                      <Image src={Cancle} alt='cancel' />
+                    </span>
+                  );
+                } else if(category === 'diff') {
+                  const [min, max] = select[category];
+
+                  return (
+                    <span
+                      key={`${category}`}
+                      className='selected ml-[1rem] flex items-center text-Orange'
+                      onClick={() => {
+                        handleItemSelect(
+                          category,
+                          selectedItems.filter((selected) => selected !== item)
+                        );
+                      }}
+                    >
+                      {min}~{max}
+                      <Image src={Cancle} alt='cancel' />
+                    </span>
+                  );
+                } else
+                  return (
+                    <span
+                      key={`${category}-${item}`}
+                      className='selected ml-[1rem] flex items-center text-Orange'
+                      onClick={() => {
+                        handleItemSelect(
+                          category,
+                          selectedItems.filter((selected) => selected !== item)
+                        );
+                      }}
+                    >
+                      {item}
+                      <Image src={Cancle} alt='cancel' />
+                    </span>
+                  );
+              })
+          )}
+          {/* {Object.entries(select).map(
             ([category, selectedItems]: [string, string[]]) =>
               selectedItems.map((item) => (
                 <span
@@ -268,7 +320,7 @@ export default function Search() {
                   )}
                 </span>
               ))
-          )}
+          )} */}
           <div className=' grow'></div>
           <button
             className='flex items-center m-[1.25rem] gap-[0.25rem]'
