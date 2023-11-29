@@ -12,6 +12,7 @@ import YabowljaStrikeImg from "../../../public/YabowljaStrikeImg.svg";
 import BannerCarousel from "../BannerCarousel";
 import NewProductCarousel from "../NewProductCarousel";
 import ToggleSection from "../ToggleSection";
+import CompanyCarousel from "../CompanyCarousel";
 
 export default function Main() {
   const [readMore, setReadMore] = useState(false);
@@ -100,7 +101,9 @@ export default function Main() {
         </div>
       </div>
 
-      <div>제조사 배너</div>
+      <div>
+        <CompanyCarousel />
+      </div>
       <div className="justify-center items-center w-[1280px] mx-auto mb-10">
         <div className="flex items-center text-[30px] font-semibold mt-[80px]">
           Q&A
