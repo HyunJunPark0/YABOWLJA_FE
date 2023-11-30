@@ -7,11 +7,11 @@ import { BallList } from "@/mocks/BallList";
 export default function ProductDetail() {
   const Balls = BallList[0];
 
-  const CoverStock = Balls.spec.coverstock;
+  const CoverStock = Balls.spec.cover_stock;
   const WeightBlock = Balls.spec.weight_block;
   const FactoryFinish = Balls.spec.factory_finish;
   const Color = Balls.spec.color;
-  const FlarePortential = Balls.spec.flare_portential;
+  const FlarePortential = Balls.spec.flare_potential;
   const Fragrance = Balls.spec.fragrance;
   const Weights = Balls.spec.weights;
   const Symmetry = Balls.spec.symmetry;

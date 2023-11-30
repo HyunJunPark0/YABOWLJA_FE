@@ -61,7 +61,7 @@ export default function ProductDetail() {
                 <td className="px-2 py-1">{ball.spec.fragrance}</td>
               </tr>
               <tr className="border-b-2">
-                <td className="border-r-2 font-bold font-bold py-1">Weights</td>
+                <td className="border-r-2 font-bold py-1">Weights</td>
                 <td className="border-r-2 px-2 py-1">{ball.spec.weights}</td>
                 <td className="border-r-2 px-2 font-bold py-1">Hook</td>
                 <td className="px-2 py-1">{ball.spec.hook}</td>

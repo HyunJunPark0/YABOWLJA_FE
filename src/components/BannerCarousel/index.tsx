@@ -29,7 +29,7 @@ export default function BannerCarousel() {
         }}
         navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
-        className="BannerSwiper"
+        className="BannerSwiper mt-[40px]"
       >
         <SwiperSlide>
           <div className="relative w-full justify-center items-center flex">
