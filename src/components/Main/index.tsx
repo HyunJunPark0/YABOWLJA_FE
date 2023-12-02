@@ -10,9 +10,9 @@ import SearchIcon from "../../../public/searchIcon.svg";
 import YabowljaBG from "../../../public/YabowljaBG.svg";
 import YabowljaStrikeImg from "../../../public/YabowljaStrikeImg.svg";
 import BannerCarousel from "../BannerCarousel";
+import CompanyCarousel from "../CompanyCarousel";
 import NewProductCarousel from "../NewProductCarousel";
 import ToggleSection from "../ToggleSection";
-import CompanyCarousel from "../CompanyCarousel";
 
 export default function Main() {
   const [readMore, setReadMore] = useState(false);
