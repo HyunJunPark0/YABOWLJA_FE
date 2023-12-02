@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import Link from 'next/link';
 
-interface ISignupData {
+interface ISignUpData {
   id: string;
   password: string;
   confirmPassword: string;
@@ -12,11 +12,12 @@ interface ISignupData {
   phoneNumber: string;
   style: string;
   agree: boolean;
+  is_righthanded: boolean;
 }
 
 export default function SignupForm() {
   const styleOptions = ['크랭커', '투핸드', '덤리스', '클래식'];
-  const [signupData, setSignupData] = useState<ISignupData>({
+  const [signUpData, setSignUpData] = useState<ISignUpData>({
     id: '',
     password: '',
     confirmPassword: '',
@@ -24,6 +25,7 @@ export default function SignupForm() {
     phoneNumber: '',
     style: '',
     agree: false,
+    is_righthanded: true,
   });
 
   const handleChange = (
@@ -31,8 +33,8 @@ export default function SignupForm() {
   ) => {
     const { name, value, type, checked } = event.target;
 
-    setSignupData((prevSignupData) => ({
-      ...prevSignupData,
+    setSignUpData((prev) => ({
+      ...prev,
       [name]: type === 'checkbox' ?  checked : value,
     }));
     
@@ -45,8 +47,8 @@ export default function SignupForm() {
   };
 
   useEffect(() => {
-    console.log('Signup Data:', signupData);
-  }, [signupData]);
+    console.log('Signup Data:', signUpData);
+  }, [signUpData]);
 
 
   return (
@@ -60,7 +62,7 @@ export default function SignupForm() {
             type='text'
             name='id'
             placeholder='아이디'
-            value={signupData.id}
+            value={signUpData.id}
             onChange={handleChange}
           />
 
@@ -79,7 +81,7 @@ export default function SignupForm() {
             type='password'
             name='password'
             placeholder='비밀번호'
-            value={signupData.password}
+            value={signUpData.password}
             onChange={handleChange}
           />
         </div>
@@ -91,7 +93,7 @@ export default function SignupForm() {
             type='password'
             name='confirmPassword'
             placeholder='비밀번호 확인'
-            value={signupData.confirmPassword}
+            value={signUpData.confirmPassword}
             onChange={handleChange}
           />
         </div>
@@ -103,7 +105,7 @@ export default function SignupForm() {
             type='text'
             name='nickname'
             placeholder='닉네임'
-            value={signupData.nickname}
+            value={signUpData.nickname}
             onChange={handleChange}
           />
         </div>
@@ -115,7 +117,7 @@ export default function SignupForm() {
             type='tel'
             name='phoneNumber'
             placeholder='핸드폰번호'
-            value={signupData.phoneNumber}
+            value={signUpData.phoneNumber}
             onChange={handleChange}
           />
         </div>
@@ -127,7 +129,7 @@ export default function SignupForm() {
             className='border p-2 w-full'
             id='style'
             name='style'
-            value={signupData.style}
+            value={signUpData.style}
             onChange={handleChange}
           >
             <option value=''>투구 스타일 선택</option>
@@ -144,7 +146,7 @@ export default function SignupForm() {
             type='checkbox'
             id='agree'
             name='agree'
-            checked={signupData.agree}
+            checked={signUpData.agree}
             onChange={handleChange}
           />
           <label htmlFor='agree' className='ml-2'>
