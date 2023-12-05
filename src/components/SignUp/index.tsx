@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface ISignUpData {
-  id: string;
+  user_id: string;
   password: string;
   confirmPassword: string;
-  nickname: string;
-  phoneNumber: string;
-  style: string;
+  username: string;
+  phone: string;
+  posture: string;
   agree: boolean;
   is_righthanded: boolean;
 }
@@ -18,12 +18,12 @@ interface ISignUpData {
 export default function SignupForm() {
   const styleOptions = ['크랭커', '투핸드', '덤리스', '클래식'];
   const [signUpData, setSignUpData] = useState<ISignUpData>({
-    id: '',
+    user_id: '',
     password: '',
     confirmPassword: '',
-    nickname: '',
-    phoneNumber: '',
-    style: '',
+    username: '',
+    phone: '',
+    posture: '',
     agree: false,
     is_righthanded: true,
   });
@@ -60,9 +60,9 @@ export default function SignupForm() {
             className='border p-2 flex-grow'
             id='id'
             type='text'
-            name='id'
+            name='user_id'
             placeholder='아이디'
-            value={signUpData.id}
+            value={signUpData.user_id}
             onChange={handleChange}
           />
 
@@ -101,11 +101,11 @@ export default function SignupForm() {
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='nickname'
+            id='username'
             type='text'
-            name='nickname'
+            name='username'
             placeholder='닉네임'
-            value={signUpData.nickname}
+            value={signUpData.username}
             onChange={handleChange}
           />
         </div>
@@ -113,11 +113,11 @@ export default function SignupForm() {
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='phoneNumber'
+            id='phone'
             type='tel'
-            name='phoneNumber'
+            name='phone'
             placeholder='핸드폰번호'
-            value={signUpData.phoneNumber}
+            value={signUpData.phone}
             onChange={handleChange}
           />
         </div>
@@ -127,15 +127,15 @@ export default function SignupForm() {
           </label>
           <select
             className='border p-2 w-full'
-            id='style'
-            name='style'
-            value={signUpData.style}
+            id='posture'
+            name='posture'
+            value={signUpData.posture}
             onChange={handleChange}
           >
             <option value=''>투구 스타일 선택</option>
-            {styleOptions.map((style, index) => (
-              <option key={index} value={style}>
-                {style}
+            {styleOptions.map((posture, index) => (
+              <option key={index} value={posture}>
+                {posture}
               </option>
             ))}
           </select>
