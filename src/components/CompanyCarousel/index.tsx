@@ -46,7 +46,7 @@ export default function CompanyCarousel() {
         <SwiperSlide className="h-[200px] w-[200px]">
           <Image alt="Columbia300" src={Columbia300} />
         </SwiperSlide>
-        <SwiperSlide className="h-[200px] w-[200px]">
+        <SwiperSlide className="h-[200px] w-[200px] bg-white">
           <Image alt="Ebonite" src={Ebonite} />
         </SwiperSlide>
         <SwiperSlide className="h-[200px] w-[200px]">

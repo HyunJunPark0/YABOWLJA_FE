@@ -22,17 +22,10 @@ export default function Main() {
 
   return (
     <div>
-      {/* <div className="flex mt-[40px] justify-center items-center">
-        <Image src={Banner} alt="Banner" />
-        <div className="absolute text-[36px] text-white justify-center items-center text-center">
-          검색도 비교도
-          <br /> 야볼자로 시작하세요!
-        </div>
-      </div> */}
       <BannerCarousel />
-      <div className="flex justify-center items-center gap-[32px] mt-[40px]">
+      <div className="flex justify-center items-center gap-[1.9%] mt-[40px] w-2/3 mx-auto">
         <Link href="/productList">
-          <button className="flex border h-[124px] w-[624px] rounded-[10px]">
+          <button className="flex border h-[124px] w-[110%] rounded-[10px]">
             <Image
               className="my-[16px] ml-[36px]"
               src={SearchIcon}
@@ -101,7 +94,7 @@ export default function Main() {
         </div>
       </div>
 
-      <div>
+      <div className="w-2/3 justify-center items-center mx-auto h-[260px] bg-[#F9F9F9] flex">
         <CompanyCarousel />
       </div>
       <div className="justify-center items-center w-[1280px] mx-auto mb-10">
