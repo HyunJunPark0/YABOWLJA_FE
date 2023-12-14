@@ -23,9 +23,9 @@ export default function Main() {
   return (
     <div>
       <BannerCarousel />
-      <div className="flex justify-center items-center gap-[1.9%] mt-[40px] w-2/3 mx-auto">
+      <div className="flex justify-center items-center gap-[1.9%] mt-[40px] mx-auto">
         <Link href="/productList">
-          <button className="flex border h-[124px] w-[110%] rounded-[10px]">
+          <button className="flex border h-[124px] w-[624px] rounded-[10px]">
             <Image
               className="my-[16px] ml-[36px]"
               src={SearchIcon}
