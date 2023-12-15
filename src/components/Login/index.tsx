@@ -35,13 +35,13 @@ export default function LoginForm() {
         password: loginData.password
       })
       
-      console.log('Login success', res.data);
-      
+      console.log('success', res.data);
+
     } catch (error) {
-      console.error('Login failed', error);
+      console.error('failed', error);
       
     }
-    if (loginData.rememberMe) {
+    if (loginData.rememberMe === true) {
       localStorage.setItem('savedId', loginData.id);
     } else {
       localStorage.removeItem('savedId');

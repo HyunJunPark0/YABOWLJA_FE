@@ -11,7 +11,7 @@ interface ISignUpData {
   username: string;
   phone: string;
   posture: string;
-  is_right_handed: boolean;
+  is_right_handed: boolean | undefined;
 }
 
 export default function SignupForm() {
@@ -22,11 +22,12 @@ export default function SignupForm() {
     username: '',
     phone: '',
     posture: '',
-    is_right_handed: true,
+    is_right_handed: undefined,
   });
 
   const [confirmPassword, setConfirmPassword] = useState('');
   const [agree, setAgree] = useState<boolean>(false);
+  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = event.target;
@@ -46,17 +47,24 @@ export default function SignupForm() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault;
-    try {
-      const res = await axios.post(
-        'http://localhost:8000/user/signup',
-        signUpData
-      );
-    } catch (error) {}
+    //유효성검사 추가 필요.
+    if (signUpData.is_right_handed !== undefined || agree === true) {
+      try {
+        const res = await axios.post(
+          'http://localhost:8000/user/signup',
+          signUpData
+        );
+        console.log('success', res.data);
+      } catch (error) {
+        console.error('failed', error);
+        
+      }
+    }
   };
 
-  useEffect(() => {
-    console.log('Signup Data:', signUpData);
-  }, [signUpData, agree]);
+  // useEffect(() => {
+  //   console.log('Signup Data:', signUpData);
+  // }, [signUpData, agree]);
 
   return (
     <div className='max-w-[40rem] h-[40rem] flex flex-col items-center justify-center m-auto border mt-[10rem]'>
@@ -163,8 +171,7 @@ export default function SignupForm() {
             id='is_right_handed'
             value='true'
             onChange={handleChange}
-            checked
-          />{' '}
+          />
           오른손
           <input
             type='radio'
@@ -173,7 +180,7 @@ export default function SignupForm() {
             value='false'
             className='ml-4'
             onChange={handleChange}
-          />{' '}
+          />
           왼손
         </div>
 
