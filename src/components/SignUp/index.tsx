@@ -12,11 +12,11 @@ interface ISignUpData {
   phone: string;
   posture: string;
   agree: boolean;
-  is_righthanded: boolean;
+  is_right_handed: boolean;
 }
 
 export default function SignupForm() {
-  const styleOptions = ['크랭커', '투핸드', '덤리스', '클래식'];
+  const postureOptions = ['크랭커', '투핸드', '덤리스', '클래식'];
   const [signUpData, setSignUpData] = useState<ISignUpData>({
     user_id: '',
     password: '',
@@ -25,7 +25,7 @@ export default function SignupForm() {
     phone: '',
     posture: '',
     agree: false,
-    is_righthanded: true,
+    is_right_handed: true,
   });
 
   const handleChange = (
@@ -40,15 +40,19 @@ export default function SignupForm() {
     
   };
 
-  
-
-  const handleSubmit = () => {
+  const checkID  = () => {
     
+  }
+
+  const handleSubmit = (event:React.FormEvent) => {
+    event.preventDefault
   };
 
   useEffect(() => {
     console.log('Signup Data:', signUpData);
   }, [signUpData]);
+
+
 
 
   return (
@@ -64,6 +68,7 @@ export default function SignupForm() {
             placeholder='아이디'
             value={signUpData.user_id}
             onChange={handleChange}
+            required
           />
 
           <button
@@ -83,6 +88,7 @@ export default function SignupForm() {
             placeholder='비밀번호'
             value={signUpData.password}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -95,6 +101,7 @@ export default function SignupForm() {
             placeholder='비밀번호 확인'
             value={signUpData.confirmPassword}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -107,6 +114,7 @@ export default function SignupForm() {
             placeholder='닉네임'
             value={signUpData.username}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -119,11 +127,12 @@ export default function SignupForm() {
             placeholder='핸드폰번호'
             value={signUpData.phone}
             onChange={handleChange}
+            required
           />
         </div>
         <div className='mb-4'>
           <label className='block text-gray-700 text-sm font-bold mb-2'>
-            투구 스타일 선택
+            투구 스타일
           </label>
           <select
             className='border p-2 w-full'
@@ -131,14 +140,22 @@ export default function SignupForm() {
             name='posture'
             value={signUpData.posture}
             onChange={handleChange}
+            required
           >
             <option value=''>투구 스타일 선택</option>
-            {styleOptions.map((posture, index) => (
+            {postureOptions.map((posture, index) => (
               <option key={index} value={posture}>
                 {posture}
               </option>
             ))}
           </select>
+        </div>
+        <div className='mb-4'>
+          <label className='block text-gray-700 text-sm font-bold mb-2'>
+            사용하는 손
+          </label>
+          <input type="radio" name="is_right_handed" id="is_right_handed" value='true' onChange={handleChange} checked/> 오른손
+          <input type="radio" name="is_right_handed" id="is_right_handed" value='false' className='ml-4'onChange={handleChange}/> 왼손
         </div>
 
         <div className='mb-4 flex items-center'>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
+import axios from 'axios';
 import Link from "next/link";
 
 interface ILoginData {
@@ -26,7 +27,20 @@ export default function LoginForm() {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    try {
+      const res = await axios.post('http://localhost:8000/user/signin',{
+        id: loginData.id,
+        password: loginData.password
+      })
+      
+      console.log('Login success', res.data);
+      
+    } catch (error) {
+      console.error('Login failed', error);
+      
+    }
     if (loginData.rememberMe) {
       localStorage.setItem('savedId', loginData.id);
     } else {
@@ -58,6 +72,7 @@ export default function LoginForm() {
             placeholder='아이디'
             value={loginData.id}
             onChange={handleChange}
+            required
           />
         </div>
         <div className='mb-4 flex items-center'>
@@ -69,6 +84,7 @@ export default function LoginForm() {
             placeholder='비밀번호'
             value={loginData.password}
             onChange={handleChange}
+            required
           />
         </div>
         <div className='mb-4 flex items-center'>
