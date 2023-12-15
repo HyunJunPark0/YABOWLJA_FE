@@ -86,6 +86,7 @@ const Performance = ['엔트리', '로우미들', '미들', '어퍼미들', '하
 export default function Search() {
   const [select, setSelect] = useState<ISelectedItems>(initialState);
 
+  //선택항목 State에 저장
   const handleItemSelect = (category: string, selectedItems: string[]) => {
     setSelect((prev) => ({
       ...prev,
@@ -94,25 +95,30 @@ export default function Search() {
     console.log('Current State:', select);
   };
 
-  const handleReset = () => {
-    setSelect(initialState);
+  const tipFormatter = (value: number[]) => {
+    return `${value}만원`;
   };
 
+  //Price diff Event
   const handleSliderChange = (category: string, value: number[]) => {
-    
     setSelect((prevSelect) => ({
       ...prevSelect,
       [category]: value,
     }));
   };
 
-  const tipFormatter = (value: number[]) => {
-    return `${value}만원`;
+  //선택항목 초기화
+  const handleReset = () => {
+    setSelect(initialState);
   };
 
-  // const onClickSearchButton = (e: React.FormEvent<HTMLInputElement>) => {
-  //   e.preventDefault();
-  // };
+  const handleSubmit = () => {
+    axios.get('https://').then((response) => {
+      console.log('res', response.data).catch((error) => {
+        console.error('에러 발생', error);
+      });
+    });
+  };
 
   const trackStyle = [{ backgroundColor: 'gray' }, { backgroundColor: 'gray' }];
   const handleStyle = [
@@ -263,12 +269,12 @@ export default function Search() {
                       <Image src={Cancle} alt='cancel' />
                     </span>
                   );
-                } else if(category === 'diff') {
+                } else if (category === 'diff') {
                   const [min, max] = select[category];
 
                   return (
                     <span
-                      key={`${category}`}
+                      key={`${category}-${item}`}
                       className='selected ml-[1rem] flex items-center text-Orange'
                       onClick={() => {
                         handleItemSelect(
@@ -329,7 +335,10 @@ export default function Search() {
             <Image src={Reset} alt='reset' />
             <span>초기화</span>
           </button>
-          <button className='bg-Orange text-white w-[5rem] h-[2.25rem] rounded-l rounded-r mr-[1rem]'>
+          <button
+            className='bg-Orange text-white w-[5rem] h-[2.25rem] rounded-l rounded-r mr-[1rem]'
+            onClick={handleSubmit}
+          >
             검색
           </button>
         </div>

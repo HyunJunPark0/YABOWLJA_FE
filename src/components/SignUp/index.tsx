@@ -2,52 +2,69 @@
 
 import { useState, useEffect } from 'react';
 
+import axios from 'axios';
 import Link from 'next/link';
 
-interface ISignupData {
-  id: string;
+interface ISignUpData {
+  user_id: string;
   password: string;
-  confirmPassword: string;
-  nickname: string;
-  phoneNumber: string;
-  style: string;
-  agree: boolean;
+  username: string;
+  phone: string;
+  posture: string;
+  is_right_handed: boolean | undefined;
 }
 
 export default function SignupForm() {
-  const styleOptions = ['크랭커', '투핸드', '덤리스', '클래식'];
-  const [signupData, setSignupData] = useState<ISignupData>({
-    id: '',
+  const postureOptions = ['크랭커', '투핸드', '덤리스', '클래식'];
+  const [signUpData, setSignUpData] = useState<ISignUpData>({
+    user_id: '',
     password: '',
-    confirmPassword: '',
-    nickname: '',
-    phoneNumber: '',
-    style: '',
-    agree: false,
+    username: '',
+    phone: '',
+    posture: '',
+    is_right_handed: undefined,
   });
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const { name, value, type, checked } = event.target;
-
-    setSignupData((prevSignupData) => ({
-      ...prevSignupData,
-      [name]: type === 'checkbox' ?  checked : value,
-    }));
-    
-  };
-
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [agree, setAgree] = useState<boolean>(false);
   
 
-  const handleSubmit = () => {
-    
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = event.target;
+
+    if (name === 'confirmPassword') {
+      setConfirmPassword(value);
+    } else if (type === 'checkbox') {
+      setAgree(checked);
+    } else
+      setSignUpData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
   };
 
-  useEffect(() => {
-    console.log('Signup Data:', signupData);
-  }, [signupData]);
+  const checkID = () => {};
 
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault;
+    //유효성검사 추가 필요.
+    if (signUpData.is_right_handed !== undefined || agree === true) {
+      try {
+        const res = await axios.post(
+          'http://localhost:8000/user/signup',
+          signUpData
+        );
+        console.log('success', res.data);
+      } catch (error) {
+        console.error('failed', error);
+        
+      }
+    }
+  };
+
+  // useEffect(() => {
+  //   console.log('Signup Data:', signUpData);
+  // }, [signUpData, agree]);
 
   return (
     <div className='max-w-[40rem] h-[40rem] flex flex-col items-center justify-center m-auto border mt-[10rem]'>
@@ -58,10 +75,11 @@ export default function SignupForm() {
             className='border p-2 flex-grow'
             id='id'
             type='text'
-            name='id'
+            name='user_id'
             placeholder='아이디'
-            value={signupData.id}
+            value={signUpData.user_id}
             onChange={handleChange}
+            required
           />
 
           <button
@@ -79,8 +97,9 @@ export default function SignupForm() {
             type='password'
             name='password'
             placeholder='비밀번호'
-            value={signupData.password}
+            value={signUpData.password}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -91,52 +110,78 @@ export default function SignupForm() {
             type='password'
             name='confirmPassword'
             placeholder='비밀번호 확인'
-            value={signupData.confirmPassword}
+            value={confirmPassword}
             onChange={handleChange}
+            required
           />
         </div>
 
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='nickname'
+            id='username'
             type='text'
-            name='nickname'
+            name='username'
             placeholder='닉네임'
-            value={signupData.nickname}
+            value={signUpData.username}
             onChange={handleChange}
+            required
           />
         </div>
 
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='phoneNumber'
+            id='phone'
             type='tel'
-            name='phoneNumber'
+            name='phone'
             placeholder='핸드폰번호'
-            value={signupData.phoneNumber}
+            value={signUpData.phone}
             onChange={handleChange}
+            required
           />
         </div>
         <div className='mb-4'>
           <label className='block text-gray-700 text-sm font-bold mb-2'>
-            투구 스타일 선택
+            투구 스타일
           </label>
           <select
             className='border p-2 w-full'
-            id='style'
-            name='style'
-            value={signupData.style}
+            id='posture'
+            name='posture'
+            value={signUpData.posture}
             onChange={handleChange}
+            required
           >
             <option value=''>투구 스타일 선택</option>
-            {styleOptions.map((style, index) => (
-              <option key={index} value={style}>
-                {style}
+            {postureOptions.map((posture, index) => (
+              <option key={index} value={posture}>
+                {posture}
               </option>
             ))}
           </select>
+        </div>
+        <div className='mb-4'>
+          <label className='block text-gray-700 text-sm font-bold mb-2'>
+            사용하는 손
+          </label>
+          <input
+            type='radio'
+            name='is_right_handed'
+            id='is_right_handed'
+            value='true'
+            onChange={handleChange}
+          />
+          오른손
+          <input
+            type='radio'
+            name='is_right_handed'
+            id='is_right_handed'
+            value='false'
+            className='ml-4'
+            onChange={handleChange}
+          />
+          왼손
         </div>
 
         <div className='mb-4 flex items-center'>
@@ -144,7 +189,7 @@ export default function SignupForm() {
             type='checkbox'
             id='agree'
             name='agree'
-            checked={signupData.agree}
+            checked={agree}
             onChange={handleChange}
           />
           <label htmlFor='agree' className='ml-2'>
