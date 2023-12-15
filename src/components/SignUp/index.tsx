@@ -8,7 +8,6 @@ import Link from 'next/link';
 interface ISignUpData {
   user_id: string;
   password: string;
-  confirmPassword: string;
   username: string;
   phone: string;
   posture: string;
@@ -20,25 +19,27 @@ export default function SignupForm() {
   const [signUpData, setSignUpData] = useState<ISignUpData>({
     user_id: '',
     password: '',
-    confirmPassword: '',
     username: '',
     phone: '',
     posture: '',
     is_right_handed: true,
   });
 
-  const [agree, setAgree] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [agree, setAgree] = useState<boolean>(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = event.target;
 
-    setSignUpData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    if (type === 'checkbox') {
+    if (name === 'confirmPassword') {
+      setConfirmPassword(value);
+    } else if (type === 'checkbox') {
       setAgree(checked);
-    }
+    } else
+      setSignUpData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
   };
 
   const checkID = () => {};
@@ -101,7 +102,7 @@ export default function SignupForm() {
             type='password'
             name='confirmPassword'
             placeholder='비밀번호 확인'
-            value={signUpData.confirmPassword}
+            value={confirmPassword}
             onChange={handleChange}
             required
           />
