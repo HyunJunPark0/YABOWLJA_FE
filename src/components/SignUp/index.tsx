@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
+import axios from 'axios';
 import Link from 'next/link';
 
 interface ISignUpData {
@@ -11,7 +12,6 @@ interface ISignUpData {
   username: string;
   phone: string;
   posture: string;
-  agree: boolean;
   is_right_handed: boolean;
 }
 
@@ -24,36 +24,38 @@ export default function SignupForm() {
     username: '',
     phone: '',
     posture: '',
-    agree: false,
     is_right_handed: true,
   });
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const [agree, setAgree] = useState(false);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = event.target;
 
     setSignUpData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ?  checked : value,
+      [name]: value,
     }));
-    
+    if (type === 'checkbox') {
+      setAgree(checked);
+    }
   };
 
-  const checkID  = () => {
-    
-  }
+  const checkID = () => {};
 
-  const handleSubmit = (event:React.FormEvent) => {
-    event.preventDefault
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault;
+    try {
+      const res = await axios.post(
+        'http://localhost:8000/user/signup',
+        signUpData
+      );
+    } catch (error) {}
   };
 
   useEffect(() => {
     console.log('Signup Data:', signUpData);
-  }, [signUpData]);
-
-
-
+  }, [signUpData, agree]);
 
   return (
     <div className='max-w-[40rem] h-[40rem] flex flex-col items-center justify-center m-auto border mt-[10rem]'>
@@ -154,8 +156,24 @@ export default function SignupForm() {
           <label className='block text-gray-700 text-sm font-bold mb-2'>
             사용하는 손
           </label>
-          <input type="radio" name="is_right_handed" id="is_right_handed" value='true' onChange={handleChange} checked/> 오른손
-          <input type="radio" name="is_right_handed" id="is_right_handed" value='false' className='ml-4'onChange={handleChange}/> 왼손
+          <input
+            type='radio'
+            name='is_right_handed'
+            id='is_right_handed'
+            value='true'
+            onChange={handleChange}
+            checked
+          />{' '}
+          오른손
+          <input
+            type='radio'
+            name='is_right_handed'
+            id='is_right_handed'
+            value='false'
+            className='ml-4'
+            onChange={handleChange}
+          />{' '}
+          왼손
         </div>
 
         <div className='mb-4 flex items-center'>
@@ -163,7 +181,7 @@ export default function SignupForm() {
             type='checkbox'
             id='agree'
             name='agree'
-            checked={signUpData.agree}
+            checked={agree}
             onChange={handleChange}
           />
           <label htmlFor='agree' className='ml-2'>
