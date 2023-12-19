@@ -52,14 +52,14 @@ export default function NewProductCarousel() {
       >
         <SwiperSlide>
           <div className="border h-[376px] w-[305px] rounded-[10px]">
-            <div className="flex w-[305px] h-[220px] border-b justify-center items-center">
+            <button className="flex w-[305px] h-[220px] border-b justify-center items-center">
               <Image
                 src={Thumbnail}
                 alt="Thumbnail"
                 width={200}
                 height={200}
               ></Image>
-            </div>
+            </button>
             <div className="text-[16px] ml-[16px] mt-[16px]">
               {Company} - {Name} / {Weight}파운드
             </div>
@@ -68,14 +68,14 @@ export default function NewProductCarousel() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="border h-[376px] w-[305px] rounded-[10px]">
-            <div className="flex w-[305px] h-[220px] border-b justify-center items-center">
+            <button className="flex w-[305px] h-[220px] border-b justify-center items-center">
               <Image
                 src={Thumbnail}
                 alt="Thumbnail"
                 width={200}
                 height={200}
               ></Image>
-            </div>
+            </button>
             <div className="text-[16px] ml-[16px] mt-[16px]">
               {Company} - {Name} / {Weight}파운드
             </div>
@@ -84,14 +84,14 @@ export default function NewProductCarousel() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="border h-[376px] w-[305px] rounded-[10px]">
-            <div className="flex w-[305px] h-[220px] border-b justify-center items-center">
+            <button className="flex w-[305px] h-[220px] border-b justify-center items-center">
               <Image
                 src={Thumbnail}
                 alt="Thumbnail"
                 width={200}
                 height={200}
               ></Image>
-            </div>
+            </button>
             <div className="text-[16px] ml-[16px] mt-[16px]">
               {Company} - {Name} / {Weight}파운드
             </div>
@@ -100,14 +100,14 @@ export default function NewProductCarousel() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="border h-[376px] w-[305px] rounded-[10px]">
-            <div className="flex w-[305px] h-[220px] border-b justify-center items-center">
+            <button className="flex w-[305px] h-[220px] border-b justify-center items-center">
               <Image
                 src={Thumbnail}
                 alt="Thumbnail"
                 width={200}
                 height={200}
               ></Image>
-            </div>
+            </button>
             <div className="text-[16px] ml-[16px] mt-[16px]">
               {Company} - {Name} / {Weight}파운드
             </div>

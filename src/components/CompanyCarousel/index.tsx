@@ -38,19 +38,29 @@ export default function CompanyCarousel() {
         className="BannerSwiper mt-[40px]"
       >
         <SwiperSlide className="h-[200px] w-[200px]">
-          <Image alt="Global900" src={Global900} />
+          <button>
+            <Image alt="Global900" src={Global900} />
+          </button>
         </SwiperSlide>
         <SwiperSlide className="h-[200px] w-[200px]">
-          <Image alt="Brunswick" src={Brunswick} />
+          <button>
+            <Image alt="Brunswick" src={Brunswick} />
+          </button>
         </SwiperSlide>
         <SwiperSlide className="h-[200px] w-[200px]">
-          <Image alt="Columbia300" src={Columbia300} />
+          <button>
+            <Image alt="Columbia300" src={Columbia300} />
+          </button>
+        </SwiperSlide>
+        <SwiperSlide className="h-[200px] w-[200px] bg-white">
+          <button>
+            <Image alt="Ebonite" src={Ebonite} />
+          </button>
         </SwiperSlide>
         <SwiperSlide className="h-[200px] w-[200px]">
-          <Image alt="Ebonite" src={Ebonite} />
-        </SwiperSlide>
-        <SwiperSlide className="h-[200px] w-[200px]">
-          <Image alt="Storm" src={Storm} />
+          <button>
+            <Image alt="Storm" src={Storm} />
+          </button>
         </SwiperSlide>
       </Swiper>
     </>
