@@ -5,21 +5,15 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 
-interface ISignUpData {
-  nickname: string;
-  password: string;
-  username: string;
-  email: string;
-  posture: string;
-  is_right_handed: boolean | undefined;
-}
+import { ISignUpData } from '@/types/user';
+
+
 
 export default function SignupForm() {
   const postureOptions = ['크랭커', '투핸드', '덤리스', '클래식'];
   const [signUpData, setSignUpData] = useState<ISignUpData>({
     nickname: '',
     password: '',
-    username: '',
     email: '',
     posture: '',
     is_right_handed: undefined,
@@ -77,10 +71,10 @@ export default function SignupForm() {
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='id'
+            id='nickname'
             type='text'
             name='nickname'
-            placeholder='아이디'
+            placeholder='닉네임'
             value={signUpData.nickname}
             onChange={handleChange}
             required
@@ -120,26 +114,14 @@ export default function SignupForm() {
           />
         </div>
 
-        <div className='mb-4 flex items-center'>
-          <input
-            className='border p-2 flex-grow'
-            id='username'
-            type='text'
-            name='username'
-            placeholder='닉네임'
-            value={signUpData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
 
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
             id='email'
-            type='tel'
+            type='email'
             name='email'
-            placeholder='핸드폰번호'
+            placeholder='이메일'
             value={signUpData.email}
             onChange={handleChange}
             required

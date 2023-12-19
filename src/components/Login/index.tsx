@@ -5,11 +5,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from "next/link";
 
-interface ILoginData {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-}
+import { ILoginData } from '@/types/user';
+
 
 export default function LoginForm() {
   const [loginData, setLoginData] = useState<ILoginData>({
@@ -70,10 +67,10 @@ export default function LoginForm() {
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='id'
-            type='text'
+            id='email'
+            type='email'
             name='email'
-            placeholder='아이디'
+            placeholder='아이디(E-mail)'
             value={loginData.email}
             onChange={handleChange}
             required
