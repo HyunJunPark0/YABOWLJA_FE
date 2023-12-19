@@ -13,9 +13,9 @@ import type { SliderMarks } from 'antd/es/slider';
 
 interface ISelectedItems {
   companies: string[];
-  price: string[];
-  coverstock: string[];
-  factoryfinish: string[];
+  price: number[];
+  cover_stock: string[];
+  factory_finish: string[];
   color: string[];
   pound: string[];
   symmetry: string[];
@@ -26,8 +26,8 @@ interface ISelectedItems {
 const initialState: ISelectedItems = {
   companies: [],
   price: [],
-  coverstock: [],
-  factoryfinish: [],
+  cover_stock: [],
+  factory_finish: [],
   color: [],
   pound: [],
   symmetry: [],
@@ -164,9 +164,9 @@ export default function Search() {
           </div>
           <SelectButton
             items={CoverStock}
-            selectedItems={select.coverstock}
+            selectedItems={select.cover_stock}
             onItemSelect={(selectedItems) =>
-              handleItemSelect('coverstock', selectedItems)
+              handleItemSelect('cover_stock', selectedItems)
             }
           />
         </div>
@@ -176,9 +176,9 @@ export default function Search() {
           </div>
           <SelectButton
             items={FactoryFinish}
-            selectedItems={select.factoryfinish}
+            selectedItems={select.factory_finish}
             onItemSelect={(selectedItems) =>
-              handleItemSelect('factoryfinish', selectedItems)
+              handleItemSelect('factory_finish', selectedItems)
             }
           />
         </div>
