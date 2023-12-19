@@ -6,10 +6,10 @@ import axios from 'axios';
 import Link from 'next/link';
 
 interface ISignUpData {
-  user_id: string;
+  nickname: string;
   password: string;
   username: string;
-  phone: string;
+  email: string;
   posture: string;
   is_right_handed: boolean | undefined;
 }
@@ -17,10 +17,10 @@ interface ISignUpData {
 export default function SignupForm() {
   const postureOptions = ['크랭커', '투핸드', '덤리스', '클래식'];
   const [signUpData, setSignUpData] = useState<ISignUpData>({
-    user_id: '',
+    nickname: '',
     password: '',
     username: '',
-    phone: '',
+    email: '',
     posture: '',
     is_right_handed: undefined,
   });
@@ -79,9 +79,9 @@ export default function SignupForm() {
             className='border p-2 flex-grow'
             id='id'
             type='text'
-            name='user_id'
+            name='nickname'
             placeholder='아이디'
-            value={signUpData.user_id}
+            value={signUpData.nickname}
             onChange={handleChange}
             required
           />
@@ -136,11 +136,11 @@ export default function SignupForm() {
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='phone'
+            id='email'
             type='tel'
-            name='phone'
+            name='email'
             placeholder='핸드폰번호'
-            value={signUpData.phone}
+            value={signUpData.email}
             onChange={handleChange}
             required
           />
