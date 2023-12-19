@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from "next/link";
 
+import { loginRequest } from '@/apis/authRequests';
 import { ILoginData } from '@/types/user';
 
 
@@ -27,16 +28,11 @@ export default function LoginForm() {
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     try {
-      const res = await axios.post('http://localhost:8000/user/signin',{
-        email: loginData.email,
-        password: loginData.password
-      })
+      const res = await loginRequest(loginData);
 
       console.log('success', res.data);
-
     } catch (error) {
       console.error('failed', error);
-      
     }
     if (loginData.rememberMe === true) {
       localStorage.setItem('savedId', loginData.email);
