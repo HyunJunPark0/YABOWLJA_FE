@@ -5,22 +5,16 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 
-interface ISignUpData {
-  user_id: string;
-  password: string;
-  username: string;
-  phone: string;
-  posture: string;
-  is_right_handed: boolean | undefined;
-}
+import { ISignUpData } from '@/types/user';
+
+
 
 export default function SignupForm() {
   const postureOptions = ['크랭커', '투핸드', '덤리스', '클래식'];
   const [signUpData, setSignUpData] = useState<ISignUpData>({
-    user_id: '',
+    nickname: '',
     password: '',
-    username: '',
-    phone: '',
+    email: '',
     posture: '',
     is_right_handed: undefined,
   });
@@ -43,6 +37,8 @@ export default function SignupForm() {
       }));
   };
 
+
+
   const checkID = () => {};
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -62,6 +58,8 @@ export default function SignupForm() {
     }
   };
 
+ 
+
   // useEffect(() => {
   //   console.log('Signup Data:', signUpData);
   // }, [signUpData, agree]);
@@ -73,11 +71,11 @@ export default function SignupForm() {
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='id'
+            id='nickname'
             type='text'
-            name='user_id'
-            placeholder='아이디'
-            value={signUpData.user_id}
+            name='nickname'
+            placeholder='닉네임'
+            value={signUpData.nickname}
             onChange={handleChange}
             required
           />
@@ -116,27 +114,15 @@ export default function SignupForm() {
           />
         </div>
 
-        <div className='mb-4 flex items-center'>
-          <input
-            className='border p-2 flex-grow'
-            id='username'
-            type='text'
-            name='username'
-            placeholder='닉네임'
-            value={signUpData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
 
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='phone'
-            type='tel'
-            name='phone'
-            placeholder='핸드폰번호'
-            value={signUpData.phone}
+            id='email'
+            type='email'
+            name='email'
+            placeholder='이메일'
+            value={signUpData.email}
             onChange={handleChange}
             required
           />

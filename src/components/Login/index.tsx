@@ -5,15 +5,13 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from "next/link";
 
-interface ILoginData {
-  id: string;
-  password: string;
-  rememberMe: boolean;
-}
+import { loginRequest } from '@/apis/authRequests';
+import { ILoginData } from '@/types/user';
+
 
 export default function LoginForm() {
   const [loginData, setLoginData] = useState<ILoginData>({
-    id: '',
+    email: '',
     password: '',
     rememberMe: false,
   });
@@ -30,19 +28,14 @@ export default function LoginForm() {
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     try {
-      const res = await axios.post('http://localhost:8000/user/signin',{
-        id: loginData.id,
-        password: loginData.password
-      })
-      
-      console.log('success', res.data);
+      const res = await loginRequest(loginData);
 
+      console.log('success', res.data);
     } catch (error) {
       console.error('failed', error);
-      
     }
     if (loginData.rememberMe === true) {
-      localStorage.setItem('savedId', loginData.id);
+      localStorage.setItem('savedId', loginData.email);
     } else {
       localStorage.removeItem('savedId');
     }
@@ -53,11 +46,15 @@ export default function LoginForm() {
     if (savedId) {
       setLoginData((prevLoginData) => ({
         ...prevLoginData,
-        id: savedId,
+        email: savedId,
         rememberMe: true,
       }));
     }
   }, []);
+
+  useEffect(()=> {  
+    console.log('Signup Data:', loginData);
+  },[loginData])
 
   return (
     <div className='max-w-[40rem] h-[25rem] flex flex-col items-center justify-center m-auto border mt-[10rem]'>
@@ -66,11 +63,11 @@ export default function LoginForm() {
         <div className='mb-4 flex items-center'>
           <input
             className='border p-2 flex-grow'
-            id='id'
-            type='text'
-            name='id'
-            placeholder='아이디'
-            value={loginData.id}
+            id='email'
+            type='email'
+            name='email'
+            placeholder='아이디(E-mail)'
+            value={loginData.email}
             onChange={handleChange}
             required
           />
