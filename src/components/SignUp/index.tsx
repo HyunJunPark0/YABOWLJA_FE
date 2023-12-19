@@ -43,6 +43,8 @@ export default function SignupForm() {
       }));
   };
 
+
+
   const checkID = () => {};
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -61,6 +63,8 @@ export default function SignupForm() {
       }
     }
   };
+
+ 
 
   // useEffect(() => {
   //   console.log('Signup Data:', signUpData);

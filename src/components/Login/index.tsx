@@ -6,14 +6,14 @@ import axios from 'axios';
 import Link from "next/link";
 
 interface ILoginData {
-  id: string;
+  email: string;
   password: string;
   rememberMe: boolean;
 }
 
 export default function LoginForm() {
   const [loginData, setLoginData] = useState<ILoginData>({
-    id: '',
+    email: '',
     password: '',
     rememberMe: false,
   });
@@ -31,10 +31,10 @@ export default function LoginForm() {
     event.preventDefault()
     try {
       const res = await axios.post('http://localhost:8000/user/signin',{
-        id: loginData.id,
+        email: loginData.email,
         password: loginData.password
       })
-      
+
       console.log('success', res.data);
 
     } catch (error) {
@@ -42,7 +42,7 @@ export default function LoginForm() {
       
     }
     if (loginData.rememberMe === true) {
-      localStorage.setItem('savedId', loginData.id);
+      localStorage.setItem('savedId', loginData.email);
     } else {
       localStorage.removeItem('savedId');
     }
@@ -53,11 +53,15 @@ export default function LoginForm() {
     if (savedId) {
       setLoginData((prevLoginData) => ({
         ...prevLoginData,
-        id: savedId,
+        email: savedId,
         rememberMe: true,
       }));
     }
   }, []);
+
+  useEffect(()=> {  
+    console.log('Signup Data:', loginData);
+  },[loginData])
 
   return (
     <div className='max-w-[40rem] h-[25rem] flex flex-col items-center justify-center m-auto border mt-[10rem]'>
@@ -68,9 +72,9 @@ export default function LoginForm() {
             className='border p-2 flex-grow'
             id='id'
             type='text'
-            name='id'
+            name='email'
             placeholder='아이디'
-            value={loginData.id}
+            value={loginData.email}
             onChange={handleChange}
             required
           />

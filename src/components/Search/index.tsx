@@ -54,6 +54,7 @@ const Companies = [
   '로또그립',
   '햄머',
 ];
+
 const CoverStock = ['우레탄', '솔리드', '하이브리드', '폴리시드'];
 const FactoryFinish = ['500', '1000', '1500', '2400', '4000'];
 
