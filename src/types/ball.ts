@@ -1,3 +1,5 @@
+import { AxiosRequestConfig } from "axios";
+
 export interface BowlingBall {
   id: number;
   company: string;
@@ -37,4 +39,17 @@ export interface BallImage {
   image: string[];
   thumbnail_image: string;
   video_url: string;
+}
+
+//검색조건 타입
+export interface ISelectedItems extends AxiosRequestConfig{
+  companies: string[];
+  price: number[];
+  cover_stock: string[];
+  factory_finish: string[];
+  color: string[];
+  pound: string[];
+  symmetry: string[];
+  performance: string[];
+  diff: string[];
 }

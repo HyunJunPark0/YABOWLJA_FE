@@ -3,11 +3,10 @@
 import { useState, useEffect } from 'react';
 
 import axios from 'axios';
-import Link from "next/link";
+import Link from 'next/link';
 
-import { loginRequest } from '@/apis/authRequests';
+import { LoginEP } from '@/apis/\bapiEndpoints';
 import { ILoginData } from '@/types/user';
-
 
 export default function LoginForm() {
   const [loginData, setLoginData] = useState<ILoginData>({
@@ -25,11 +24,13 @@ export default function LoginForm() {
     }));
   };
 
-  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
-      const res = await loginRequest(loginData);
-
+      const res = await axios.post(LoginEP, {
+        email: loginData.email,
+        passwrod: loginData.password,
+      });
       console.log('success', res.data);
     } catch (error) {
       console.error('failed', error);
@@ -52,9 +53,9 @@ export default function LoginForm() {
     }
   }, []);
 
-  useEffect(()=> {  
+  useEffect(() => {
     console.log('Signup Data:', loginData);
-  },[loginData])
+  }, [loginData]);
 
   return (
     <div className='max-w-[40rem] h-[25rem] flex flex-col items-center justify-center m-auto border mt-[10rem]'>
@@ -104,13 +105,13 @@ export default function LoginForm() {
             로그인
           </button>
           <Link href='/signup'>
-          <button
-            type='button'
-            className='bg-gray-300 text-gray-700 p-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray'
+            <button
+              type='button'
+              className='bg-gray-300 text-gray-700 p-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray'
             >
-            회원가입
-          </button>
-            </Link>
+              회원가입
+            </button>
+          </Link>
         </div>
       </form>
     </div>
