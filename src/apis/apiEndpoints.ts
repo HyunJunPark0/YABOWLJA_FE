@@ -15,6 +15,7 @@ export const SearchEP = (select) => {
     `&cover_stock=${select.cover_stock.join('&cover_stock=')}` +
     `&factory_finish=${select.factory_finish.join('&factory_finish=')}` +
     `&color=${select.color.join('&color=')}`;
-    //map으로 수정해야할듯
+    //수정해야 함, 나머지 조건들 나오면 수정.
+
   return endpoint;
 }

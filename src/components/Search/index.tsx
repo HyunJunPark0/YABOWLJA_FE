@@ -5,6 +5,7 @@ import { Slider } from 'antd';
 import axios from 'axios';
 import Image from 'next/image';
 
+import { SearchEP } from '@/apis/\bapiEndpoints';
 import { ISelectedItems } from '@/types/ball';
 
 import SelectButton from './Button/SelectButton';
@@ -13,7 +14,6 @@ import Reset from '../../../public/ArrowClockwise.svg';
 import Cancle from '../../../public/XCircle.svg';
 
 import type { SliderMarks } from 'antd/es/slider';
-import { SearchEP } from '@/apis/\bapiEndpoints';
 
 const initialState: ISelectedItems = {
   companies: [],

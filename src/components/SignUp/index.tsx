@@ -8,7 +8,6 @@ import Link from 'next/link';
 import { CheckEmailEP, SignUpEP } from '@/apis/\bapiEndpoints';
 import { ISignUpData } from '@/types/user';
 
-
 export default function SignupForm() {
   const [signUpData, setSignUpData] = useState<ISignUpData>({
     nickname: '',
@@ -24,11 +23,8 @@ export default function SignupForm() {
   const checkID = async () => {
     event?.preventDefault();
     try {
-      const res = await axios.post(
-        CheckEmailEP,
-        signUpData.email
-        );
-        alert(res.data);
+      const res = await axios.post(CheckEmailEP, { email: signUpData.email });
+      alert(res.data);
       //res가 뭐가 올지 알아야함.
     } catch (error) {
       console.error('failed', error);
